@@ -10,6 +10,8 @@
   --btn-hover-orange: #ea8d50;
   --btn-active-transparent: #dad9d8;
 
+  --arrow-btn-hover: #fceee6;
+  --arrow-btn-active: #5a2502;
   font-family: var(--main-font-family);
   font-size: 16px;
   line-height: 1.5;

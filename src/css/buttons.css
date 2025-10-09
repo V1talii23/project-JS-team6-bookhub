@@ -3,23 +3,21 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  border: 1px solid var(--black);
-  background-color: transparent;
   border-radius: 4px;
   padding: 8px 20px;
-  max-width: 343px;
+  min-width: 48px;
   height: 40px;
   width: 100%;
 
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
+  font: 400 16px/1.5 var(--font-family, sans-serif);
   color: var(--black);
+  border: 1px solid var(--black);
+  background-color: transparent;
+  overflow: hidden;
 
   &:hover,
   &:focus {
     background-color: var(--btn-hover-orange);
-    border: 1px solid var(--black);
   }
 
   &:active {
@@ -29,57 +27,80 @@
   &:disabled,
   &[disabled] {
     opacity: 0.2;
+    pointer-events: none;
   }
 }
 
-.btn-modal-transparent {
+.btn--modal-transparent {
   padding: 12px 24px;
   height: 48px;
 }
 
-.btn-orange {
-  border: 1px solid var(--btn-orange);
+.btn--orange {
+  border-color: var(--btn-orange);
   background-color: var(--btn-orange);
+  color: #fff;
   height: 48px;
   padding: 12px 24px;
-  color: #fff;
 
   &:hover,
   &:focus {
     background-color: var(--black);
-    border: 1px solid var(--black);
+    border-color: var(--black);
   }
 
   &:active {
     background-color: var(--btn-active-orange);
-  }
-
-  &:disabled,
-  &[disabled] {
-    opacity: 0.2;
+    border-color: var(--btn-active-orange);
   }
 }
 
-.btn-register {
+.btn--register {
   background-color: transparent;
   border: none;
+  max-width: 95px;
+  height: 24px;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border-color: transparent;
+    opacity: 0.8;
+  }
 }
 
-/* .link-btn {
-  border: 0.52px solid var(--btn-orange);
+.btn--arrow {
+  border: 1px solid rgba(11, 5, 0, 0.15);
   background-color: var(--btn-orange);
+  color: #fff;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+
+  &:hover,
+  &:focus {
+    background-color: var(--arrow-btn-hover);
+    color: var(--black);
+  }
+  &:active {
+    background-color: var(--arrow-btn-active);
+    color: #fff;
+  }
+}
+
+.btn--link {
   border-radius: 2px;
   padding: 4px 10px;
   max-width: 117px;
   height: 20px;
-  color: #fff;
   font-size: 8px;
+}
 
-  @media screen and(min-width:768px) {
-    border: 1px solid var(--btn-orange);
+@media (min-width: 768px) {
+  .link-btn {
     border-radius: 4px;
     padding: 4px 20px;
     max-width: 164px;
     height: 32px;
   }
-} */
+}
