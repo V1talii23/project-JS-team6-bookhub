@@ -4,6 +4,8 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 64px;
 }
 .nav-logo {
   display: inline-flex;
@@ -11,12 +13,38 @@
   justify-content: center;
 }
 .nav-list {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 40px;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+    opacity: 1;
+    pointer-events: all;
+  }
 }
+
 .nav-link {
+  padding: 8px 0;
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0px);
+  }
+}
+
+.nav-logo-icon {
+  fill: var(--black);
+}
+
+/* .nav-link {
   position: relative;
   display: block;
   font-weight: 500;
@@ -41,4 +69,4 @@
 }
 .nav-link.active::after {
   background: #747bff;
-}
+} */
