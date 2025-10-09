@@ -1,0 +1,152 @@
+:root {
+    --accent: #EA6A2D;
+    --bg-peach: #F6DED4;
+    --text: #1F1F1F;
+    --radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: #e5e2df;
+    color: var(--text);
+}
+
+/* ===== HERO ===== */
+.hero {
+    max-width: 760px;
+    margin: 24px auto 40px;
+    padding: 20px;
+    background: var(--bg-peach);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* контейнер со слайдами */
+.hero-media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* список слайдов */
+.hero-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+}
+
+.hero-item {
+    grid-area: 1 / 1;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--bg) center / cover no-repeat;
+    background-image: var(--bg);
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.hero-item.active {
+    opacity: 1;
+}
+
+/* текст поверх баннера */
+.hero-overlay {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    color: #fff;
+}
+
+.hero-badge {
+    font-family: "Rubik", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    color: #fff;
+    /* 
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4); */
+}
+
+.hero-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+/* стрелки */
+.hero-controls {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.hero-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #1F1F1F;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    transition: opacity 0.2s ease, transform 0.08s ease;
+}
+
+.hero-btn:active {
+    transform: translateY(1px);
+}
+
+.hero-btn[disabled],
+.hero-btn[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* главный заголовок под слайдером */
+.hero-title {
+    margin-top: 20px;
+    margin-bottom: 0;
+    color: var(--text);
+    font-weight: 800;
+    line-height: 1.05;
+    font-size: clamp(32px, 6vw, 56px);
+    text-align: left;
+}
+
+/* секция-контейнер для ссылки */
+.books-dummy {
+    max-width: 760px;
+    margin: 40px auto 80px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.books-dummy h2 {
+    margin: 0 0 8px;
+}

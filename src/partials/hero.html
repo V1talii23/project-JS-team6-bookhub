@@ -1,5 +1,57 @@
 <section id="" class="section hero-section">
   <div class="container">
-    <h1 class="hero-title">hero</h1>
+    <section class="hero" aria-labelledby="site-title">
+      <div class="hero-media">
+        <ul class="hero-list" role="list">
+          <li
+            class="hero-item active"
+            style="--bg: url('./img/hero/1.png')"
+            data-text="Get 10% off your first order"
+          ></li>
+
+          <li
+            class="hero-item"
+            style="--bg: url('./img/hero/2.png')"
+            data-text="Save 15% on some books"
+          ></li>
+
+          <li
+            class="hero-item"
+            style="--bg: url('./img/hero/3.png')"
+            data-text="Summer Sale! Up to -40% discounts"
+          ></li>
+
+          <li
+            class="hero-item"
+            style="--bg: url('./img/hero/4.png')"
+            data-text="Last chance to buy our spring bestsellers"
+          ></li>
+        </ul>
+
+        <div class="hero-overlay">
+          <p id="hero-text" class="hero-badge">Get 10% off your first order</p>
+          <a id="hero-btn" class="hero-cta" href="#books">Shop Now!</a>
+        </div>
+      </div>
+
+      <div class="hero-controls">
+        <button
+          id="prev-btn"
+          class="hero-btn"
+          aria-label="Previous"
+          disabled
+          aria-disabled="true"
+        >
+          ←
+        </button>
+        <button id="next-btn" class="hero-btn" aria-label="Next">→</button>
+      </div>
+
+      <h1 id="site-title" class="hero-title">
+        Discover Your<br />Next Great Read<br />Today!
+      </h1>
+    </section>
+
+    <script type="module" src="../hero.js"></script>
   </div>
 </section>
