@@ -1,11 +1,21 @@
 :root {
-  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
-  font-family: 'Rubik', sans-serif;
+  --main-font-family: 'Rubik', sans-serif;
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-long: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --black: #0b0500;
+  --btn-orange: #e15d05;
+  --btn-active-orange: #b44a04;
+
+  --btn-hover-orange: #ea8d50;
+  --btn-active-transparent: #dad9d8;
+
+  font-family: var(--main-font-family);
   font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
-
-  color: #242424;
+  font-style: normal;
+  color: var(--black);
   background-color: rgba(255, 255, 255, 0.87);
 
   font-synthesis: none;
@@ -21,11 +31,77 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
+  position: relative;
+  background-color: #fceee6;
 }
 
-main {
-  flex-grow: 1;
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  margin: 0;
+  font-family: var(--main-font-family);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
-main:has(.back-link) {
-  text-align: center;
+
+h1,
+.h1 {
+  font-size: 40px;
+
+  @media screen and (min-width: 1440px) {
+    font-size: 52px;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 36px;
+
+  @media screen and (min-width: 1440px) {
+    font-size: 48px;
+  }
+}
+
+h3,
+.h3 {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+h4,
+.h4 {
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+
+a,
+button {
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+address {
+  font-style: normal;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  overflow: hidden;
 }
