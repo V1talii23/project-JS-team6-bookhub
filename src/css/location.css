@@ -18,7 +18,20 @@
 
 
 /* Styles for Tablet devices */
+.location-top {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 32px;
+}
 
+.location-top-block {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-direction: column;
+	/*max-width: 336px;*/
+}
 
 
 
