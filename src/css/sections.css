@@ -1,0 +1,24 @@
+.section {
+  padding: 64px 0;
+}
+
+.section-books {
+  padding: 32px 0;
+}
+
+.section-hero {
+  padding: 0 0 32px 0;
+}
+
+.section-title {
+  font-family: var(--main-font-family);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  font-size: 36px;
+
+  @media screen and (min-width: 1440px) {
+    font-size: 48px;
+  }
+}
