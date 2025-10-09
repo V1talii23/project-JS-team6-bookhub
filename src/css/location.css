@@ -34,11 +34,14 @@
   gap: 16px;
 }
 
-
 .contact-item a {
   text-decoration: underline;
 }
 
+/* MAP */
+.map-wrapper {
+  overflow: hidden;
+}
 
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
@@ -47,23 +50,26 @@
 		justify-content: flex-start;
 		align-items: flex-start;
 		gap: 32px;
+		margin-bottom: 80px;
+	}
+
+	.location-top-block {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-direction: column;
+		max-width: 336px;
 	}
 }
-.location-top-block {
-	display: flex;
-	align-items: flex-start;
-	justify-content: flex-start;
-	flex-direction: column;
-	/*max-width: 336px;*/
-}
-
-
-
 
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
 	.location-top {
 		margin-bottom: 80px;
+	}
+
+	.location-top-block {
+		max-width: 732px;
 	}
 
   .contact-list {
