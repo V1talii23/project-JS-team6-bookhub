@@ -17,41 +17,82 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
     />
     <script type="module" crossorigin src="/project-JS-team6-bookhub/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-BFnNQn1b.css">
+    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-ZMwLzRDx.css">
   </head>
   <body>
     <header class="header">
-  <div class="container">
+  <div class="container header-container">
+    <a class="site-logo" href="./index.html" aria-label="Site logo">
+      <svg class="nav-logo-icon" width="84" height="20">
+        <use href="../img/icons.svg#icon-site-logo"></use>
+      </svg>
+    </a>
     <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="84" height="36">
-          <use href="../img/logo.svg#icon-logo-company"></use>
-        </svg>
-      </a>
-
-      <!-- <button type="button" class="btn-burger">
-        <svg class="icon" width="16" height="12">
-          <use href=""></use>
-        </svg>
-      </button> -->
       <ul class="nav-list">
         <li class="nav-item">
-          <a class="nav-link" href="./index.html">Home</a>
+          <a href="./index.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#books">Books</a>
+          <a href="#books" class="nav-link">Books</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#Feedbacks">Feedbacks</a>
+          <a href="#feedbacks" class="nav-link">Feedbacks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#events">Events</a>
+          <a href="#events" class="nav-link">Events</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#location">Location</a>
+          <a href="#location" class="nav-link">Location</a>
         </li>
       </ul>
+
+      <button
+        class="btn-burger"
+        aria-label="toggle menu button"
+        type="button"
+        data-popup-button-toggle="mobile-menu"
+      >
+        <svg class="burger-icon" width="16" height="12">
+          <use href="../img/icons.svg#icon-burger"></use>
+        </svg>
+      </button>
     </nav>
+  </div>
+
+  <div class="mobile-menu is-open" data-popup-name="mobile-menu">
+    <div class="container mobile-container">
+      <div class="mobile-wrapper">
+        <a href="./index.html" class="site-logo">
+          <svg class="logo-icon" width="84" height="20">
+            <use href="../img/icons.svg#icon-site-logo"></use>
+          </svg>
+        </a>
+        <button type="button" class="close-btn">
+          <svg class="close-btn-icon" width="12" height="12">
+            <use href="../img/icons.svg#icon-close-btn"></use>
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item">
+            <a href="./index.html" class="mobile-nav-link">Home</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#books" class="mobile-nav-link">Books</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#feedbacks" class="mobile-nav-link">Feedbacks</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#events" class="mobile-nav-link">Events</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#location" class="mobile-nav-link">Location</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -104,7 +145,7 @@
         <ul class="contact-list" aria-label="Contact information">
           <li class="contact-item">
             <svg class="contact-icon" width="25" height="25">
-              <use href="/project-JS-team6-bookhub/assets/icons-BmS8Lje7.svg#icon-mail"></use>
+              <use href="/project-JS-team6-bookhub/assets/icons-C4Be8Cla.svg#icon-mail"></use>
             </svg>
             <div class="contact-item-block">
               <p class="contact-text">Email</p>
@@ -114,7 +155,7 @@
 
           <li class="contact-item">
             <svg class="contact-icon" width="25" height="25">
-              <use href="/project-JS-team6-bookhub/assets/icons-BmS8Lje7.svg#icon-tel"></use>
+              <use href="/project-JS-team6-bookhub/assets/icons-C4Be8Cla.svg#icon-tel"></use>
             </svg>
             <div class="contact-item-block">
               <p class="contact-text">Phone</p>
@@ -124,7 +165,7 @@
 
           <li class="contact-item">
             <svg class="contact-icon" width="25" height="25">
-              <use href="/project-JS-team6-bookhub/assets/icons-BmS8Lje7.svg#icon-location"></use>
+              <use href="/project-JS-team6-bookhub/assets/icons-C4Be8Cla.svg#icon-location"></use>
             </svg>
             <div class="contact-item-block">
               <p class="contact-text">Office</p>
