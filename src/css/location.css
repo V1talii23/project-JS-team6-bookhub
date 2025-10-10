@@ -37,8 +37,12 @@
   gap: 16px;
 }
 
-.contact-item a {
+.contact-item-block a {
   text-decoration: underline;
+}
+
+.contact-text {
+	font-size: 20px;
 }
 
 /* MAP */
