@@ -10,6 +10,7 @@
 
 .location-title {
   font-size: 48px;
+	margin-bottom: 24px;
 }
 
 .location-text {
@@ -43,6 +44,7 @@
 
 .contact-text {
 	font-size: 20px;
+	margin-bottom: 8px;
 }
 
 /* MAP */
