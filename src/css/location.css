@@ -46,12 +46,14 @@
   max-width: 1312px;
   margin: 0 auto;
 }
+
 .map-wrapper iframe {
   width: 100%;
   display: block;
   border: 0;
   aspect-ratio: 343 / 395; /* співвідношення для мобільного */
 }
+
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
 	.location-top {
@@ -70,11 +72,9 @@
 		max-width: 336px;
 	}
 
-@media (min-width: 768px) {
   .map-wrapper iframe {
-    aspect-ratio: 16 / 9; /* для планшета і десктопа */
+    aspect-ratio: 16 / 9; /*співвідношення для планшета і десктопа */
   }
-}
 }
 
 /* Styles for Desktop devices */
