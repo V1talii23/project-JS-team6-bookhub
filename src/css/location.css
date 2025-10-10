@@ -32,14 +32,13 @@
 
 .contact-item {
 	display: flex;
-	align-items: baseline;
-	justify-content: flex-start;
-	flex-direction: row;
+	align-items: flex-start;
   gap: 16px;
 }
 
 .contact-item-block a {
   text-decoration: underline;
+	text-underline-offset: 2px;
 }
 
 .contact-text {
