@@ -1,34 +1,75 @@
 <header class="header">
-  <div class="container">
+  <div class="container header-container">
+    <a class="site-logo" href="./index.html" aria-label="Site logo">
+      <svg class="nav-logo-icon" width="84" height="20">
+        <use href="../img/icons.svg#icon-site-logo"></use>
+      </svg>
+    </a>
     <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="84" height="36">
-          <use href="../img/logo.svg#icon-logo-company"></use>
-        </svg>
-      </a>
-
-      <!-- <button type="button" class="btn-burger">
-        <svg class="icon" width="16" height="12">
-          <use href=""></use>
-        </svg>
-      </button> -->
       <ul class="nav-list">
         <li class="nav-item">
-          <a class="nav-link" href="./index.html">Home</a>
+          <a href="./index.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#books">Books</a>
+          <a href="#books" class="nav-link">Books</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#Feedbacks">Feedbacks</a>
+          <a href="#feedbacks" class="nav-link">Feedbacks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#events">Events</a>
+          <a href="#events" class="nav-link">Events</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#location">Location</a>
+          <a href="#location" class="nav-link">Location</a>
         </li>
       </ul>
+
+      <button
+        class="btn-burger"
+        aria-label="toggle menu button"
+        type="button"
+        data-popup-button-toggle="mobile-menu"
+      >
+        <svg class="burger-icon" width="16" height="12">
+          <use href="../img/icons.svg#icon-burger"></use>
+        </svg>
+      </button>
     </nav>
+  </div>
+
+  <div class="mobile-menu is-open" data-popup-name="mobile-menu">
+    <div class="container mobile-container">
+      <div class="mobile-wrapper">
+        <a href="./index.html" class="site-logo">
+          <svg class="logo-icon" width="84" height="20">
+            <use href="../img/icons.svg#icon-site-logo"></use>
+          </svg>
+        </a>
+        <button type="button" class="close-btn">
+          <svg class="close-btn-icon" width="12" height="12">
+            <use href="../img/icons.svg#icon-close-btn"></use>
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item">
+            <a href="./index.html" class="mobile-nav-link">Home</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#books" class="mobile-nav-link">Books</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#feedbacks" class="mobile-nav-link">Feedbacks</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#events" class="mobile-nav-link">Events</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#location" class="mobile-nav-link">Location</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
