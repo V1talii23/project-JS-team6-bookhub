@@ -1,6 +1,10 @@
 /* Styles for Mobile devices */
-.location-top-block {
-  margin-bottom: 24px;
+.location-top {
+  margin-bottom: 32px;
+} 
+
+ .location-top-block {
+  margin-bottom: 32px;
 } 
 
 .location-subtitle {
@@ -15,7 +19,6 @@
 
 .location-text {
   font-size: 18px;
-  margin-bottom: 32px;
 }
 
 /* CONTACTS */
@@ -25,7 +28,6 @@
 	justify-content: flex-start;
 	flex-direction: column;
 	gap: 24px;
-  margin-bottom: 32px;
   list-style: none;
   padding: 0;
 }
@@ -39,6 +41,11 @@
 .contact-item-block a {
   text-decoration: underline;
 	text-underline-offset: 2px;
+	transition: color 0.3s ease;
+}
+
+.contact-item-block a:hover {
+	color: #ea8d50;
 }
 
 .contact-text {
