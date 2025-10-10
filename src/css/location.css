@@ -1,4 +1,8 @@
 /* Styles for Mobile devices */
+.location-top-block {
+  margin-bottom: 24px;
+} 
+
 .location-subtitle {
   font-size: 16px;
   margin-bottom: 16px;
@@ -6,7 +10,6 @@
 
 .location-title {
   font-size: 48px;
-  margin-bottom: 24px;
 }
 
 .location-text {
@@ -40,9 +43,15 @@
 
 /* MAP */
 .map-wrapper {
-  overflow: hidden;
+  max-width: 1312px;
+  margin: 0 auto;
 }
-
+.map-wrapper iframe {
+  width: 100%;
+  display: block;
+  border: 0;
+  aspect-ratio: 343 / 395; /* співвідношення для мобільного */
+}
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
 	.location-top {
@@ -60,6 +69,12 @@
 		flex-direction: column;
 		max-width: 336px;
 	}
+
+@media (min-width: 768px) {
+  .map-wrapper iframe {
+    aspect-ratio: 16 / 9; /* для планшета і десктопа */
+  }
+}
 }
 
 /* Styles for Desktop devices */
