@@ -1,11 +1,12 @@
 /* Styles for Mobile devices */
 .location-details {
-  margin-bottom: 32px;
-} 
-
-.location-description {
-  margin-bottom: 32px;
-} 
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 32px;
+	margin-bottom: 32px;
+}
 
 .location-subtitle {
   font-size: 16px;
@@ -57,6 +58,7 @@
 .map-wrapper {
   max-width: 1312px;
   margin: 0 auto;
+	margin-top: 32px;
 }
 
 .map-wrapper iframe {
@@ -69,10 +71,7 @@
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
 	.location-details {
-		display: flex;
-		justify-content: flex-start;
-		align-items: flex-start;
-		gap: 32px;
+		flex-direction: row;
 		margin-bottom: 80px;
 	}
 
@@ -92,6 +91,7 @@
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
 	.location-details {
+		gap: 80px;
 		margin-bottom: 80px;
 	}
 
