@@ -54,7 +54,9 @@
   width: 48px;
   height: 48px;
   transition: var(--transition);
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover,
   &:focus-visible {
