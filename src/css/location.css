@@ -1,9 +1,9 @@
 /* Styles for Mobile devices */
-.location-top {
+.location-details {
   margin-bottom: 32px;
 } 
 
- .location-top-block {
+.location-top-block {
   margin-bottom: 32px;
 } 
 
@@ -68,7 +68,7 @@
 
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
-	.location-top {
+	.location-details {
 		display: flex;
 		justify-content: flex-start;
 		align-items: flex-start;
@@ -91,7 +91,7 @@
 
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
-	.location-top {
+	.location-details {
 		margin-bottom: 80px;
 	}
 
