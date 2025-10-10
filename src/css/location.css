@@ -3,7 +3,7 @@
   margin-bottom: 32px;
 } 
 
-.location-top-block {
+.location-description {
   margin-bottom: 32px;
 } 
 
@@ -76,7 +76,7 @@
 		margin-bottom: 80px;
 	}
 
-	.location-top-block {
+	.location-description {
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
@@ -95,7 +95,7 @@
 		margin-bottom: 80px;
 	}
 
-	.location-top-block {
+	.location-description {
 		max-width: 732px;
 	}
 
