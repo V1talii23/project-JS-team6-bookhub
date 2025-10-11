@@ -1,5 +1,6 @@
 .footer {
   padding: 20px 0;
+  background: #ea8d50;
 }
 .footer-desc {
   text-align: center;
@@ -18,4 +19,85 @@
   height: 24%;
   background-color: #41d1ff;
   transition: 200ms ease;
+}
+
+.footer-nav{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
+}
+
+.footer-logo{
+  width: 84px;
+  height: 36px;
+  margin-bottom: 32px;
+}
+
+
+.footer-nav-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.footer-par{
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0b0500;
+}
+
+.footer-form{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-input{
+  border: 1px solid rgba(11, 5, 0, 0.15);
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 221px;
+  height: 48px;
+  background: rgba(11, 5, 0, 0.05);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+
+}
+
+.field::placeholder{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(11, 5, 0, 0.6);
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 4px;
+  padding: 8px 20px;
+  min-width: 48px;
+  height: 40px;
+  width: 100%;
+
+  font: 400 16px/1.5 var(--font-family, sans-serif);
+  color: var(--black);
+  border: 1px solid var(--black);
+  background-color: transparent;
+  overflow: hidden;
 }
