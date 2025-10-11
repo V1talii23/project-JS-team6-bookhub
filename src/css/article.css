@@ -11,9 +11,14 @@ p.section-text {
   }
 
   .article-image {
+    overflow: hidden;
+    display: block;
     min-width: 640px;
   }
   .article-title {
     font-size: 40px;
+  }
+  .article-img {
+    border-radius: 16px;
   }
 }
