@@ -3,8 +3,6 @@
     --accent: #d85a00;
     --muted: #6b5a52;
     --dark-backdrop: rgba(0, 0, 0, 0.5);
-    --radius: 12px;
-    --max-width: 1100px;
     --gap: 18px;
     font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
 }
@@ -53,43 +51,43 @@ main {
 
 .modal {
     width: 100%;
-    max-width: var(--max-width);
     background: var(--panel);
-    border-radius: var(--radius);
-    padding: 28px;
     position: relative;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     overflow: auto;
-    max-height: 85vh;
+    padding: 64px 16px;
+    border-radius: 16px;
+    max-width: 380px;
+    margin: 0 auto;
 }
 
 .modal-close {
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: 16px;
+    right: 16px;
     background: transparent;
     border: 0;
     padding: 8px;
     border-radius: 50%;
     cursor: pointer;
-    color: #222
+    color: #222;
 }
 
 .modal-content {
     display: flex;
-    gap: var(--gap);
-    align-items: flex-start
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .modal-left {
-    flex: 0 0 280px
+    flex: 0 0 280px;
 }
 
 .modal-left img {
     width: 100%;
-    height: 420px;
     object-fit: cover;
-    border-radius: 8px
+    height: auto;
+    border-radius: 10px;
 }
 
 .modal-right {
@@ -98,29 +96,32 @@ main {
 }
 
 .book-title {
-    font-size: 28px;
-    margin: 0 0 6px
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 24px;
 }
 
 .book-author {
-    margin: 0 0 12px;
-    color: var(--muted)
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 .book-price {
-    font-size: 20px;
-    margin: 0 0 14px
+    font-size: 24px;
+    margin-bottom: 12px;
 }
 
 .purchase-form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 18px
+    gap: 12px;
+    margin-bottom: 18px;
+    align-items: flex-start;
 }
 
 .qty-control {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     overflow: hidden;
     margin-right: 12px;
@@ -133,11 +134,10 @@ main {
     border-radius: 4px;
     padding: 8px 12px;
     cursor: pointer;
-    font-size: 18px
+    font-size: 18px;
 }
 
 #quantity {
-    width: 40px;
     text-align: center;
     padding: 12px 8px;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -145,57 +145,41 @@ main {
     font-size: 12px;
     background-color: #f3e4da;
     color: #0B0500;
+    width: 40px;
+    height: 42px;
 }
 
 .actions {
     display: inline-flex;
-    gap: 12px;
-    align-items: center
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
 }
 
 .btn {
     padding: 12px 18px;
     border-radius: 6px;
     border: 1px solid #bfa9a1;
-    cursor: pointer
+    cursor: pointer;
+}
+
+.actions .btn {
+    width: 100%;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 12px 14px;
 }
 
 .btn.primary {
     background: var(--accent);
     color: #fff;
-    border-color: transparent
+    border-color: transparent;
 }
 
 .btn.outline {
+    border: 1px solid rgba(0, 0, 0, 0.2);
     background: transparent
-}
-
-/* accordion */
-.accordion {
-    margin-top: 18px;
-    border-top: 1px solid rgba(0, 0, 0, 0.06)
-}
-
-.accordion-item {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04)
-}
-
-.accordion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 0;
-    cursor: pointer
-}
-
-.accordion-title {
-    font-weight: 700
-}
-
-.accordion-panel {
-    padding: 0 0 16px;
-    color: var(--muted);
-    display: none
 }
 
 /* simple toast */
@@ -208,16 +192,64 @@ main {
     color: #fff;
     padding: 8px 12px;
     border-radius: 8px;
-    z-index: 200
+    z-index: 200;
 }
 
-/* responsive */
-@media (max-width:900px) {
-    .modal-content {
-        flex-direction: column
+@media (min-width:768px) {
+    .modal {
+        padding: 64px 32px;
+        border-radius: 16px;
+        max-width: 704px;
+        margin: 0 auto;
     }
 
-    .modal-left img {
-        height: 300px
+    .modal-content {
+        gap: 24px;
+        flex-direction: row;
     }
+}
+
+@media (min-width:1400px) {
+    .modal {
+    padding: 28px;
+    max-height: 85vh;
+    max-width: 1300px;
+}
+
+.modal-content {
+    gap: var(--gap);
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.modal-left img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 8px
+}
+
+.book-title {
+    margin: 0 0 6px;
+}
+
+.book-author {
+    margin: 0 0 12px;
+}
+
+.book-price {
+    margin: 0 0 14px;
+}
+
+.purchase-form {
+    gap: 16px;
+}
+
+.qty-control {
+    display: inline-flex;
+}
+
+.actions {
+    flex-direction: row;
+}
 }
