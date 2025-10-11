@@ -17,7 +17,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
     />
     <script type="module" crossorigin src="/project-JS-team6-bookhub/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-BX87VgIz.css">
+    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-B894_GmE.css">
   </head>
   <body>
     <header class="header">
@@ -30,7 +30,7 @@
     <nav class="nav">
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="./index.html" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
           <a href="#books" class="nav-link">Books</a>
@@ -59,7 +59,7 @@
     </nav>
   </div>
 
-  <div class="mobile-menu is-open" data-popup-name="mobile-menu">
+  <div class="mobile-menu" data-popup-name="mobile-menu">
     <div class="container mobile-container">
       <div class="mobile-wrapper">
         <a href="./index.html" class="site-logo">
@@ -98,9 +98,60 @@
 
     <main>
       <!-- Loads the specified .html file -->
-      <section id="" class="section hero-section">
+      <section id="" class="section">
   <div class="container">
-    <h1 class="hero-title">hero</h1>
+   <ul class="hero-slider" id="home">
+      <li class="slide active banner-1">
+        <div class="overlay ban-1">
+          <p class="discount">Get 10% off your first order</p>
+          <a href="#books" class="cta-button">Shop Now!</a>
+        </div>
+      </li>
+
+      <li class="slide banner-2 ">
+        <div class="overlay ban-2">
+          <p class="discount">Save 15% on some books</p>
+          <a href="#books" class="cta-button">Shop Now!</a>
+        </div>
+      </li>
+
+      <li class="slide banner-3 ">
+        <div class="overlay ban-3">
+          <p class="discount">Get Summer Sale! Up to -40% discounts</p>
+          <a href="#books" class="cta-button">Shop Now!</a>
+        </div>
+      </li>
+
+      <li class="slide banner-4 ">
+        <div class="overlay ban-4">
+          <p class="discount">Last chance to buy our spring bestsellers</p>
+          <a href="#books" class="cta-button">Shop Now!</a>
+        </div>
+      </li>
+    </ul>
+
+    <div class="header-row">
+      <h1>Discover Your Next Great Read Today!</h1>
+      <div class="slider-controls"><!-- Кнопки навігації -->
+      <div class="slider-controls">
+        <button class="btn--arrow prev" aria-label="Previous slide">
+          <svg class="icon default" width="14" height="14">
+            <use xlink:href="/project-JS-team6-bookhub/sprite.svg#chevron-left"></use>
+          </svg>
+          <svg class="icon active" width="14" height="14">
+            <use xlink:href="/project-JS-team6-bookhub/sprite.svg#chevron-left-white"></use>
+          </svg>
+        </button>
+        <button class="btn--arrow next" aria-label="Next slide">
+          <svg class="icon default" width="14" height="14">
+            <use xlink:href="/project-JS-team6-bookhub/sprite.svg#chevron-right"></use>
+          </svg>
+          <svg class="icon active" width="14" height="14">
+            <use xlink:href="/project-JS-team6-bookhub/sprite.svg#chevron-right-white"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -234,6 +285,6 @@
   </div>
 </footer>
 
-    <!--  -->
+    
   </body>
 </html>
