@@ -1,5 +1,53 @@
-<section id="" class="section">
+<section id="" class="section section-article">
   <div class="container">
-    <h2 class="section-title">article</h2>
+    <div class="article__wrapper">
+      <div class="section__inner">
+        <h2 class="section-title article-title">
+          Welcome to Booksy – your cozy corner for handpicked reads.
+        </h2>
+        <p class="section-text">
+          We believe books are more than just stories — they’re companions,
+          doorways, and memories. Whether you’re chasing adventures or quiet
+          moments, we’re here to help you find your next favorite book.
+        </p>
+      </div>
+      <picture class="article-image">
+        <!-- Desktop -->
+        <source
+          srcset="
+            ./img/article/article-dsk.webp    1x,
+            ./img/article/article-dsk@2x.webp 2x
+          "
+          media="(min-width: 1440px)"
+          width="640"
+          height="474"
+        />
+
+        <!-- Tablet -->
+        <source
+          srcset="
+            ./img/article/article-tab.webp    1x,
+            ./img/article/article-tab@2x.webp 2x
+          "
+          media="(min-width: 768px)"
+          width="704"
+          height="474"
+        />
+
+        <!-- Mobile: fallback for hi DPI -->
+        <img
+          src="./img/article/article-mob.webp"
+          srcset="
+            ./img/article/article-mob.webp    1x,
+            ./img/article/article-mob@2x.webp 2x
+          "
+          loading="lazy"
+          decoding="async"
+          alt="Reader with handpicked books, enjoying a cozy moment."
+          width="343"
+          height="248"
+        />
+      </picture>
+    </div>
   </div>
 </section>
