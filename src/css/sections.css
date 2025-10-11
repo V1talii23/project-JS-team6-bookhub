@@ -1,5 +1,15 @@
 .section {
   padding: 64px 0;
+  /* Відноситься до анімації появи блоків */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Забезпечує плавну анімацію */
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-books {
