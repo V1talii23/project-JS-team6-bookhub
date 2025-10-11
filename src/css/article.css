@@ -9,7 +9,8 @@ p.section-text {
     align-items: center;
     gap: 32px;
   }
-  img {
+
+  .article-image {
     min-width: 640px;
   }
   .article-title {
