@@ -1,0 +1,58 @@
+<div id="modal-backdrop" class="backdrop" aria-hidden="true">
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button id="modal-close" class="modal-close" aria-label="Закрити модальне">
+            <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M18 6 L6 18 M6 6 L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+
+        <div class="modal-content">
+            <div class="modal-left">
+                <img id="modal-cover" src="/assets/fallback.jpg" alt="cover" />
+            </div>
+
+            <div class="modal-right">
+                <h1 id="modal-title" class="book-title">Book title</h1>
+                <p id="modal-author" class="book-author"></p>
+                <p id="modal-price" class="book-price"></p>
+
+                <form id="modal-form" class="purchase-form">
+                    <div class="qty-control" aria-label="Кількість">
+                        <button type="button" id="decrease" class="qty-btn" aria-label="Зменшити">−</button>
+                        <input id="quantity" class="qty-input" name="quantity" type="number" value="1" min="1" inputmode="numeric" />
+                        <button type="button" id="increase" class="qty-btn" aria-label="Збільшити">+</button>
+                    </div>
+
+                    <div class="actions">
+                        <button type="button" id="add-to-cart" class="btn primary">Add To Cart</button>
+                        <button type="submit" id="buy-now" class="btn outline">Buy Now</button>
+                    </div>
+                </form>
+
+                <div class="accordion-container">
+                    <div class="ac">
+                        <div class="ac-panel">
+                            <p class="ac-text">I Will Find You is a gripping thriller by the master of suspense, Harlan Coben. The story follows David Burroughs, a
+                            former prisoner wrongfully convicted of murdering his own son. When he discovers a clue suggesting his son might still
+                            be alive, David escapes from prison to uncover the truth. Fast-paced, emotional, and full of unexpected twists — this
+                            novel will keep you hooked until the very last page.</p>
+                        </div>
+                    </div>
+                    <div class="ac">
+                        <div class="ac-panel">
+                            <p class="ac-text">We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier
+                            service. Enjoy free standard shipping on orders over $50.</p>
+                        </div>
+                    </div>
+                    <div class="ac">
+                        <div class="ac-panel">
+                            <p class="ac-text">You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original
+                            condition. To start a return, please contact our support team — we’ll guide you through the process quickly and
+                            hassle-free.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
