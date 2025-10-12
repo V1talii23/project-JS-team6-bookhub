@@ -1,6 +1,46 @@
-.container .contact-container {
-  background-color: #fceee6;
+.btn--orange {
+  border: 1px solid var(--color-bamboo);
+  border-radius: 4px;
+  width: 342px;
+  display: block;
+  margin: 24px auto 0;
 }
-button {
-  color: #e15d05;
+.contact-container {
+  border-radius: 16px;
+
+  width: 866px;
+  height: 760px;
+}
+.title {
+  margin-bottom: 48px;
+}
+.message {
+  border-radius: 8px;
+
+  height: 180px;
+}
+.title,
+.main-title {
+  text-align: center;
+}
+h2 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-1-text);
+  margin-top: 16px;
+}
+textarea,
+input {
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.05);
+  height: 40px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.main-title {
+  font-size: 48px;
 }
