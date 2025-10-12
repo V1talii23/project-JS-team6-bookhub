@@ -3,6 +3,10 @@ p.section-text {
   margin-bottom: 32px;
 }
 
+.article-img {
+  border-radius: 16px;
+}
+
 @media only screen and (min-width: 1440px) {
   .article__wrapper {
     display: flex;
@@ -17,8 +21,5 @@ p.section-text {
   }
   .article-title {
     font-size: 40px;
-  }
-  .article-img {
-    border-radius: 16px;
   }
 }

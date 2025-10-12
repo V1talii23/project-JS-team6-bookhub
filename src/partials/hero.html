@@ -1,55 +1,180 @@
-<section id="" class="section">
+<section id="hero" class="section hero-section">
   <div class="container">
-   <ul class="hero-slider" id="home">
+    <ul class="hero-slider" id="home">
       <li class="slide active banner-1">
         <div class="overlay ban-1">
-          <p class="discount">Get 10% off your first order</p>
+          <h2 class="discount small-title-wrapper">
+            Get 10% off your first order
+          </h2>
           <a href="#books" class="cta-button">Shop Now!</a>
         </div>
+        <picture>
+          <source
+            media="(min-width: 1440px)"
+            srcset="
+              ../img/hero/pages-banner-1.jpg,
+              ../img/hero/pages-banner-1@2x
+            "
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset="
+              ../img/hero/pages-banner-1-tablet.jpg,
+              ../img/hero/pages-banner-1-tablet-2
+            "
+          />
+          <source
+            media="(max-width: 767px)"
+            srcset="
+              ../img/hero/pages-banner-1-mobile.jpg,
+              ../img/hero/pages-banner-1-mobile-@2x
+            "
+          />
+          <img
+            src="../img/hero/pages-banner-1-mobile.jpg"
+            alt="Get 10% off your first order"
+            class="hero-slide-img"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
       </li>
 
-      <li class="slide banner-2 ">
+      <li class="slide banner-2">
         <div class="overlay ban-2">
-          <p class="discount">Save 15% on some books</p>
+          <h2 class="discount small-title-wrapper">Save 15% on some books</h2>
           <a href="#books" class="cta-button">Shop Now!</a>
         </div>
+        <picture>
+          <source
+            media="(min-width: 1440px)"
+            srcset="
+              ../img/hero/pages-banner-2.jpg,
+              ../img/hero/pages-banner-2@2x
+            "
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset="
+              ../img/hero/pages-banner-2-tablet.jpg,
+              ../img/hero/pages-banner-2-tablet-2
+            "
+          />
+          <source
+            media="(max-width: 767px)"
+            srcset="
+              ../img/hero/pages-banner-2-mobile.jpg,
+              ../img/hero/pages-banner-2-mobile-@2x
+            "
+          />
+          <img
+            src="../img/hero/pages-banner-2-mobile.jpg"
+            alt="Save 15% on some books"
+            class="hero-slide-img"
+            loading="lazy"
+          />
+        </picture>
       </li>
 
-      <li class="slide banner-3 ">
+      <li class="slide banner-3">
         <div class="overlay ban-3">
-          <p class="discount">Get Summer Sale! Up to -40% discounts</p>
+          <h2 class="discount big-title-wrapper">
+            Summer Sale! Up to -40% discounts
+          </h2>
           <a href="#books" class="cta-button">Shop Now!</a>
         </div>
+        <picture>
+          <source
+            media="(min-width: 1440px)"
+            srcset="
+              ../img/hero/pages-banner-3.jpg,
+              ../img/hero/pages-banner-3@2x
+            "
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset="
+              ../img/hero/pages-banner-3-tablet.jpg,
+              ../img/hero/pages-banner-3-tablet-2
+            "
+          />
+          <source
+            media="(max-width: 767px)"
+            srcset="
+              ../img/hero/pages-banner-3-mobile.jpg,
+              ../img/hero/pages-banner-3-mobile-@2x
+            "
+          />
+          <img
+            src="../img/hero/pages-banner-3-mobile.jpg"
+            alt="Summer Sale!Up to -40% discounts"
+            class="hero-slide-img"
+            loading="lazy"
+          />
+        </picture>
       </li>
 
-      <li class="slide banner-4 ">
+      <li class="slide banner-4">
         <div class="overlay ban-4">
-          <p class="discount">Last chance to buy our spring bestsellers</p>
+          <h2 class="discount big-title-wrapper">
+            Last chance to buy our spring bestsellers
+          </h2>
           <a href="#books" class="cta-button">Shop Now!</a>
         </div>
+        <picture>
+          <source
+            media="(min-width: 1440px)"
+            srcset="
+              ../img/hero/pages-banner-4.jpg,
+              ../img/hero/pages-banner-4@2x
+            "
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset="
+              ../img/hero/pages-banner-4-tablet.jpg,
+              ../img/hero/pages-banner-4-tablet-2
+            "
+          />
+          <source
+            media="(max-width: 767px)"
+            srcset="
+              ../img/hero/pages-banner-4-mobile.jpg,
+              ../img/hero/pages-banner-4-mobile-@2x
+            "
+          />
+          <img
+            src="../img/hero/pages-banner-4-mobile.jpg"
+            alt="Last chance to buy our spring bestsellers"
+            class="hero-slide-img"
+            loading="lazy"
+          />
+        </picture>
       </li>
     </ul>
 
     <div class="header-row">
       <h1>Discover Your Next Great Read Today!</h1>
-      <div class="slider-controls"><!-- Кнопки навігації -->
       <div class="slider-controls">
-        <button class="btn--arrow prev" aria-label="Previous slide">
-          <svg class="icon default" width="14" height="14">
-            <use xlink:href="/sprite.svg#chevron-left"></use>
-          </svg>
-          <svg class="icon active" width="14" height="14">
-            <use xlink:href="/sprite.svg#chevron-left-white"></use>
-          </svg>
-        </button>
-        <button class="btn--arrow next" aria-label="Next slide">
-          <svg class="icon default" width="14" height="14">
-            <use xlink:href="/sprite.svg#chevron-right"></use>
-          </svg>
-          <svg class="icon active" width="14" height="14">
-            <use xlink:href="/sprite.svg#chevron-right-white"></use>
-          </svg>
-        </button>
+        <!-- Кнопки навігації -->
+        <div class="slider-controls">
+          <button class="btn--arrow prev" aria-label="Previous slide">
+            <svg class="icon default" width="14" height="14">
+              <use xlink:href="/sprite.svg#chevron-left"></use>
+            </svg>
+            <svg class="icon active" width="14" height="14">
+              <use xlink:href="/sprite.svg#chevron-left-white"></use>
+            </svg>
+          </button>
+          <button class="btn--arrow next" aria-label="Next slide">
+            <svg class="icon default" width="14" height="14">
+              <use xlink:href="/sprite.svg#chevron-right"></use>
+            </svg>
+            <svg class="icon active" width="14" height="14">
+              <use xlink:href="/sprite.svg#chevron-right-white"></use>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
