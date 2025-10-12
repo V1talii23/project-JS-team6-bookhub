@@ -209,9 +209,9 @@ function handleShowMore() {
 
 function updateButtonView(current, total) {
   if (current < total) {
-    showMoreBtn.classList.remove('hidden');
+    showMoreBtn.classList.remove('visually-hidden');
   } else {
-    showMoreBtn.classList.add('hidden');
+    showMoreBtn.classList.add('visually-hidden');
   }
 }
 
