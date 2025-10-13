@@ -4,6 +4,7 @@
   aspect-ratio: 343 / 199;
   overflow: hidden;
   border-radius: 8px;
+  margin-bottom: 24px;
 }
 
 .slide {
@@ -100,7 +101,7 @@
   flex-direction: column-reverse;
   align-items: flex-start;
   gap: 16px;
-  padding: 24px 0 32px 0;
+  /* padding: 24px 0 32px 0; */
 }
 
 .slider-controls {
@@ -156,7 +157,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 24px 0 32px 0;
+    /* padding: 24px 0 32px 0; */
   }
 
   .slider-controls {
