@@ -51,7 +51,12 @@
     align-items: center;
 }
 
-.feedbacks-swiper-pagination .feedbacks-swiper-pagination-bullet-active{
+.feedbacks-swiper-pagination .swiper-pagination-bullet{
+    background-color: #0b0500;
+    opacity: 0.2;
+}
+
+.feedbacks-swiper-pagination .swiper-pagination-bullet-active{
     background-color: #0b0500;
     opacity: 1;
 }
@@ -88,13 +93,14 @@
 
 .arrow:active{
     background-color: #5A2502;
-    
+
 }
 
 .arrow:disabled{
     background-color: #E15D05;
     opacity: 0.2;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 
