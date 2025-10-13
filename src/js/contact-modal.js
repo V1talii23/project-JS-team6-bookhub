@@ -1,43 +1,72 @@
- 
 const modal = document.querySelector('.modal');
 const openBtns = document.querySelectorAll('.open-modal');
 const closeBtns = document.createElement('button');
-const closeBtn = document.querySelector('.modal .close-modal');
- openBtns.forEach(btn => {
+const closeBtn = modal.querySelector('.close-modal');
+const scrollBody = document.body.style;
+const scrollHtml = document.documentElement.style;
+openBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    const category = btn.closest('.category')?.dataset.category || "Default";
+    const category = btn.closest('.category')?.dataset.category || 'Default';
     const categoryTitle = modal.querySelector('.title');
     categoryTitle.textContent = category;
 
     modal.classList.remove('hidden');
+    removeScroll();
   });
 });
 
 closeBtn.addEventListener('click', () => {
-  modal.classList.add('hidden');
+  closeModal();
+  addScroll();
 });
 
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.classList.add('hidden');
+modal.addEventListener('click', e => {
+  if (!e.target.closest('.register-contact-modal')) {
+    closeModal();
   }
 });
-const form = modal.querySelector('form'); 
-form.addEventListener('submit', (e) => {
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+    addScroll();
+  }
+});
+
+const form = modal.querySelector('form');
+form.addEventListener('submit', e => {
   e.preventDefault();
 
   const name = form.elements.name.value.trim();
   const email = form.elements.email.value.trim();
   const message = form.elements.message.value.trim();
 
-  if (!name || !email || !message) {
+  if (!name || !email) {
     alert('Please fill in all fields');
     return;
   }
-  console.log('Form data:', { name, email, message });
+  console.log('Form data:', { name, email, message: message || '' });
 
   alert('Your message has been sent!');
 
+  closeModal();
+  addScroll();
   form.reset();
-  modal.classList.add('hidden'); 
 });
+
+function removeScroll() {
+  scrollBody.overflow = 'hidden';
+  scrollHtml.overflow = 'hidden';
+}
+
+function addScroll() {
+  scrollBody.overflow = 'auto';
+  scrollHtml.overflow = 'auto';
+}
+
+function closeModal() {
+  modal.classList.add('hidden');
+  addScroll();
+}
+
+export { removeScroll, addScroll };

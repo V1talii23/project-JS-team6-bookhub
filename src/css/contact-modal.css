@@ -1,49 +1,58 @@
-.btn--orange {
-  border: 1px solid var(--color-bamboo);
-  border-radius: 4px;
-  width: 342px;
-  display: block;
-  margin: 24px auto 0;
-}
-.contact-container {
-  border-radius: 16px;
+.register-contact-modal {
   background-color: var(--body-bgc);
-  height: 760px;
+  border-radius: 16px;
+  max-width: 866px;
+  padding: 64px 16px;
   position: relative;
+  overflow-y: auto;
+  margin: 0 auto;
+
+  @media (min-width: 678px) {
+    padding: 64px 32px;
+  }
+  @media (min-width: 1440px) {
+    padding: 64px;
+  }
+}
+
+.btn-width {
+  display: block;
+  max-width: 342px;
+  margin: 0 auto;
+}
+
+.contact-container {
+  padding: 64px 16px;
 }
 .title {
   margin-bottom: 48px;
 }
 .message {
+  padding: 16px;
   border-radius: 8px;
-
   height: 180px;
+  overflow: hidden;
 }
 .title,
 .main-title {
   text-align: center;
 }
 .title {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 24px;
-  line-height: 140%;
-  letter-spacing: -0.01em;
-  color: var(--color-scheme-1-text);
+  line-height: 1.4;
   margin-top: 16px;
 }
 textarea,
 input {
+  padding: 12px 8px;
+  display: block;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   background-color: rgba(0, 0, 0, 0.05);
   height: 40px;
   width: 100%;
   margin-bottom: 24px;
-}
-.main-title {
-  font-size: 48px;
-  padding-top: 64px;
 }
 
 .modal {
@@ -53,18 +62,23 @@ input {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   z-index: 1000;
+  overflow: auto;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal.hidden {
-  display: none;
+  opacity: 0;
+  visibility: none;
+  pointer-events: none;
 }
-.close-modal-icon {
+/* .close-modal-icon {
   fill: black;
-}
+} */
 .close-modal {
   background: transparent;
   border: none;
