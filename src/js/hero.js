@@ -1,51 +1,60 @@
-
 const slides = document.querySelectorAll('.slide');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.hero-swiper-btn-prev');
+const nextBtn = document.querySelector('.hero-swiper-btn-next');
+
 let current = 0;
 
-// Показує потрібний слайд
 function showSlide(index) {
+  console.log('Показываем слайд:', index);
   slides.forEach((slide, i) => {
     slide.classList.remove('active');
     slide.setAttribute('aria-hidden', 'true');
     if (i === index) {
       slide.classList.add('active');
       slide.setAttribute('aria-hidden', 'false');
+      console.log('Активирован слайд:', i, slide.className);
     }
   });
 }
 
-// Підсвічує кнопку на мить (ефект "active")
-function flashButton(button) {
-  button.classList.add('is-active');
+function updateButtons() {
+  if (!prevBtn || !nextBtn) return;
 
-  // Знімаємо фокус, щоб уникнути залипання стилів
-  button.blur();
+  prevBtn.disabled = current === 0;
+  prevBtn.classList.toggle('arrow--disabled', current === 0);
 
-  // Прибираємо клас через 150 мс
-  setTimeout(() => {
-    button.classList.remove('is-active');
-  }, 350);
+  nextBtn.disabled = current === slides.length - 1;
+  nextBtn.classList.toggle('arrow--disabled', current === slides.length - 1);
 }
 
-// Ініціалізація слайдера
-if (slides.length > 0) {
+function flashButton(button) {
+  if (button.disabled) return; 
+  button.classList.add('is-active');
+  button.blur();
+  setTimeout(() => {
+    button.classList.remove('is-active');
+  }, 100);
+}
+
+if (slides.length > 0 && prevBtn && nextBtn) {
+  showSlide(current);
+  updateButtons();
+
   prevBtn.addEventListener('click', () => {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-    flashButton(prevBtn);
+    if (current > 0) {
+      current = current - 1;
+      showSlide(current);
+      updateButtons();
+      flashButton(prevBtn);
+    }
   });
 
   nextBtn.addEventListener('click', () => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-    flashButton(nextBtn);
+    if (current < slides.length - 1) {
+      current = current + 1;
+      showSlide(current);
+      updateButtons();
+      flashButton(nextBtn);
+    }
   });
-
-  // Автоперемикання слайдів
-  setInterval(() => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }, 7000);
 }
