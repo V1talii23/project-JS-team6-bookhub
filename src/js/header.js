@@ -22,13 +22,3 @@ navLinks.forEach(link => {
     toggleModal();
   });
 });
-
-// function removeScroll() {
-//   scrollBody.overflow = 'hidden';
-//   scrollHtml.overflow = 'hidden';
-// }
-
-// function addScroll() {
-//   scrollBody.overflow = 'auto';
-//   scrollHtml.overflow = 'auto';
-// }
