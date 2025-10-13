@@ -108,7 +108,7 @@ function renderBooksListMarkup(books) {
         <li class="books-item" data-id=${_id}>
           <img class="books-image" src="${book_image}" alt="${title}" />
           <div class="books-list-group">
-          <div class="books-list-section"><p class="books-list-title">${title}</p>
+          <div class="books-list-section"><h4 class="books-list-title">${title}</h4>
           <p class="books-list-author">${author}</p>
           </div>
           <p class="books-list-price">$${price}</p>
@@ -213,9 +213,9 @@ function handleShowMore() {
 
 function updateButtonView(current, total) {
   if (current < total) {
-    showMoreBtn.classList.remove('hidden');
+    showMoreBtn.classList.remove('visually-hidden');
   } else {
-    showMoreBtn.classList.add('hidden');
+    showMoreBtn.classList.add('visually-hidden');
   }
 }
 
