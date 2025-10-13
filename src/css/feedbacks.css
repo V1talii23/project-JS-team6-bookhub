@@ -103,13 +103,13 @@
 @media (min-width: 768px) {
   .feedbacks-item {
     width: 340px;
-    min-height: 244px;
+    min-height: 275px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .feedbacks-list .feedbacks-item {
     width: 421px;
-    min-height: 217px;
+    min-height: 275px;
   }
 }
