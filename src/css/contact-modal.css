@@ -8,7 +8,6 @@
 .contact-container {
   border-radius: 16px;
   background-color: var(--body-bgc);
-  width: 866px;
   height: 760px;
 }
 .title {

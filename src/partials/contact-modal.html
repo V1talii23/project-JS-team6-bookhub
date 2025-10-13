@@ -1,25 +1,35 @@
 <button class="open-modal">Register</button>
-<div class="modal hidden"> 
-<div class="container contact-container">
-  <h2 class="main-title">Register</h2>
-  <h3 class="title">Cozy Book Club — "The Midnight Library"</h3>
-  <form class=" " autocomplete="off"></form>
-   
-    <label >
-      Name
-      <input type="text" name="name" />
-    </label>
-    <label >
-      Email
-      <input type="email" name="email" autofocus />
-      
-    </label>
-    <label>
-      Message
-      <textarea name="message" rows="8" class="message"></textarea>
-    </label>
-    <button type="submit" class="btn--orange">Register</button>
-  </form>
-</div>
+<div class="modal hidden">
+  <div class="container contact-container">
+    <button class="close-modal">×</button>
+    <h2 class="main-title">Register</h2>
+    <h3 class="title">Cozy Book Club — "The Midnight Library"</h3>
+    <form class=" " autocomplete="off">
+      <label>
+        Name
+        <input type="text" placeholder="Ann" name="name" />
+      </label>
+      <label>
+        Email
+        <input
+          type="email"
+          name="email"
+          placeholder="hello@booksy.com"
+          autocomplete="email"
+          autofocus
+        />
+      </label>
+      <label>
+        Message
+        <textarea
+          name="message"
+          rows="8"
+          placeholder="Type your message..."
+          class="message"
+        ></textarea>
+      </label>
+      <button type="submit" class="btn--orange">Register</button>
+    </form>
+  </div>
 </div>
 <script type="module" src="../js/contact-modal.js"></script>
