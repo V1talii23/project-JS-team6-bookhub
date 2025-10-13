@@ -1,11 +1,16 @@
  
 const modal = document.querySelector('.modal');
-const openBtn = document.querySelector('.open-modal');
-const closeBtn = document.createElement('button');
+const openBtns = document.querySelectorAll('.open-modal');
+const closeBtns = document.createElement('button');
+const closeBtn = document.querySelector('.modal .close-modal');
+ openBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.closest('.category')?.dataset.category || "Default";
+    const categoryTitle = modal.querySelector('.title');
+    categoryTitle.textContent = category;
 
- 
-openBtn.addEventListener('click', () => {
-  modal.classList.remove('hidden');
+    modal.classList.remove('hidden');
+  });
 });
 
 closeBtn.addEventListener('click', () => {

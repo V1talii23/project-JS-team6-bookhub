@@ -9,6 +9,7 @@
   border-radius: 16px;
   background-color: var(--body-bgc);
   height: 760px;
+  position: relative;
 }
 .title {
   margin-bottom: 48px;
@@ -42,6 +43,7 @@ input {
 }
 .main-title {
   font-size: 48px;
+  padding-top: 64px;
 }
 
 .modal {
@@ -59,4 +61,16 @@ input {
 
 .modal.hidden {
   display: none;
+}
+.close-modal-icon {
+  fill: black;
+}
+.close-modal {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
 }
