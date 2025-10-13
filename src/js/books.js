@@ -82,13 +82,14 @@ function renderSelectCategoriesMarkup(arr) {
       }
     })
     .join('');
-  categoriesContainer.innerHTML = `<select name="categories" id="categories-select">${
+  categoriesContainer.innerHTML = `<select class ="books-categories-select" name="categories" id="categories-select">${
     defaultOption + allOption + markup
   }</select>`;
 }
 
 function renderListCategoriesMarkup(arr) {
-  const markup = arr
+  const allArr = [{ list_name: 'All categories' }, ...arr];
+  const markup = allArr
     .map(({ list_name }) => {
       if (list_name !== '') {
         return `<li class="categories-item" ><a class="category-link" data-category-name="${list_name}">${list_name}</a></li>`;
@@ -106,10 +107,13 @@ function renderBooksListMarkup(books) {
       ({ _id, book_image, title, author, price }) => `
         <li class="books-item" data-id=${_id}>
           <img class="books-image" src="${book_image}" alt="${title}" />
-          <p class="books-title">${title}</p>
-          <p class="books-author">${author}</p>
-          <p class="books-price">$${price}</p>
-          <button class="books-btn" data-id=${_id} type="button">Learn More</button>
+          <div class="books-list-group">
+          <div class="books-list-section"><p class="books-list-title">${title}</p>
+          <p class="books-list-author">${author}</p>
+          </div>
+          <p class="books-list-price">$${price}</p>
+          </div>
+          <button class="learn-more-btn" data-id=${_id} type="button">Learn More</button>
         </li>
       `
     )
