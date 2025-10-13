@@ -1,5 +1,5 @@
+import './js/animation';
 import './js/header';
 import './js/hero';
-import './js/animation';
 import './js/books';
 import './js/feedbacks';
