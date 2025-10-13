@@ -7,7 +7,7 @@
   overflow-y: auto;
   margin: 0 auto;
 
-  @media (min-width: 678px) {
+  @media (min-width: 778px) {
     padding: 64px 32px;
   }
   @media (min-width: 1440px) {
@@ -76,9 +76,7 @@ input {
   visibility: none;
   pointer-events: none;
 }
-/* .close-modal-icon {
-  fill: black;
-} */
+
 .close-modal {
   background: transparent;
   border: none;
