@@ -1,3 +1,5 @@
+import { removeScroll, addScroll } from './contact-modal';
+
 (() => {
   const API_BASE = 'https://books-backend.p.goit.global';
 
@@ -95,8 +97,7 @@
     // show backdrop, block scroll
     backdrop.classList.remove('hidden');
     backdrop.setAttribute('aria-hidden', 'false');
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+    removeScroll();
 
     // loading placeholders
     if (titleEl) titleEl.textContent = 'Завантаження...';
@@ -105,7 +106,9 @@
     if (cover) cover.src = '/assets/fallback.jpg';
     // clear panels
     if (accordionContainer) {
-      const panels = accordionContainer.querySelectorAll('.ac-panel');
+      const panels = Array.from(
+        accordionContainer.querySelectorAll('.ac-panel')
+      );
       panels.forEach(p => (p.innerHTML = ''));
     }
 

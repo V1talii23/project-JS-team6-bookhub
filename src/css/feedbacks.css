@@ -14,7 +14,6 @@
 
 .feedbacks-item {
   width: 341px;
-  min-height: 314px;
   flex-shrink: 0;
   padding: 32px;
   border: 1px solid rgba(11, 5, 0, 0.15);
@@ -25,6 +24,12 @@
 .feedbacks-item-text {
   font-size: 18px;
   margin-bottom: 24px;
+
+  display: -webkit-box;
+  /* -webkit-line-clamp: 3; */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .feedbacks-icon {
@@ -102,13 +107,11 @@
 @media (min-width: 768px) {
   .feedbacks-item {
     width: 340px;
-    min-height: 275px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .feedbacks-list .feedbacks-item {
     width: 421px;
-    min-height: 275px;
   }
 }
