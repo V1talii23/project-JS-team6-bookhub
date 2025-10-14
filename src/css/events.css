@@ -15,7 +15,7 @@
 .events-swiper {
   position: relative;
   width: 100%;
-  overflow: visible;
+  /* overflow: visible; */
 }
 
 .events-img {
