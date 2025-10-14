@@ -1,4 +1,4 @@
-<div class="modal hidden">
+<div class="contact-modal hidden">
   <div class="container contact-container">
     <div class="register-contact-modal">
       <button class="close-btn close-modal">
@@ -11,7 +11,12 @@
       <form class=" " autocomplete="off">
         <label>
           Name
-          <input type="text" placeholder="Ann" name="name" />
+          <input
+            type="text"
+            placeholder="Ann"
+            name="name"
+            class="contact-modal-input"
+          />
         </label>
         <label>
           Email
@@ -27,11 +32,10 @@
         <label>
           Message
           <textarea
-            class="contact-modal-input"
+            class="contact-modal-input message"
             name="message"
             rows="8"
             placeholder="Type your message..."
-            class="message"
           ></textarea>
         </label>
         <button type="submit" class="btn btn--orange btn-width">

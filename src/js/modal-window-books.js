@@ -2,8 +2,8 @@
   const API_BASE = 'https://books-backend.p.goit.global';
 
   // --- helpers ---
-  const $ = (s) => document.querySelector(s);
-  const $$ = (s) => Array.from(document.querySelectorAll(s));
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
   const escapeHtml = (s = '') =>
     String(s)
       .replaceAll('&', '&amp;')
@@ -62,13 +62,13 @@
   let focusTrapHandler = null;
 
   // ensure backdrop initially hidden
-//   if (backdrop) {
-//     backdrop.classList.add('hidden');
-//     backdrop.setAttribute('aria-hidden', 'true');
-//   }
+  //   if (backdrop) {
+  //     backdrop.classList.add('hidden');
+  //     backdrop.setAttribute('aria-hidden', 'true');
+  //   }
 
   // --- delegation for Learn More buttons (supports both .learn-more and .learn-more-btn) ---
-  document.body.addEventListener('click', (e) => {
+  document.body.addEventListener('click', e => {
     const btn = e.target.closest('.learn-more, .learn-more-btn');
     if (!btn) return;
     const id =
@@ -106,11 +106,13 @@
     // clear panels
     if (accordionContainer) {
       const panels = accordionContainer.querySelectorAll('.ac-panel');
-      panels.forEach((p) => (p.innerHTML = ''));
+      panels.forEach(p => (p.innerHTML = ''));
     }
 
     try {
-      const data = await fetchJson(`${API_BASE}/books/${encodeURIComponent(bookId)}`);
+      const data = await fetchJson(
+        `${API_BASE}/books/${encodeURIComponent(bookId)}`
+      );
       currentBook = data;
       populateModal(data);
       setInitialFocus();
@@ -145,14 +147,18 @@
     }
     if (titleEl) titleEl.textContent = title || 'Без назви';
     if (authorEl) authorEl.textContent = authors || '';
-    if (priceEl) priceEl.textContent = typeof price === 'number' ? `$${price}` : price || '';
+    if (priceEl)
+      priceEl.textContent =
+        typeof price === 'number' ? `$${price}` : price || '';
 
     if (qtyInput) qtyInput.value = 1;
 
     // fill accordion panels (Details / Shipping / Returns)
-    const details = data.details || data.description || data.summary || data.about || '';
+    const details =
+      data.details || data.description || data.summary || data.about || '';
     const shipping = data.shipping || data.shipping_info || data.delivery || '';
-    const returns = data.returns || data.returnPolicy || data.refundPolicy || '';
+    const returns =
+      data.returns || data.returnPolicy || data.refundPolicy || '';
 
     if (accordionContainer) {
       const panels = accordionContainer.querySelectorAll('.ac-panel');
@@ -163,9 +169,15 @@
       } else {
         // fallback: recreate container with three panels
         accordionContainer.innerHTML = `
-          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(details)}</p></div></div>
-          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(shipping)}</p></div></div>
-          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(returns)}</p></div></div>
+          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(
+            details
+          )}</p></div></div>
+          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(
+            shipping
+          )}</p></div></div>
+          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(
+            returns
+          )}</p></div></div>
         `;
       }
       // init accordion UI (multiple open allowed, panels closed by default)
@@ -186,21 +198,26 @@
     currentBook = null;
     // restore focus
     try {
-      if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+      if (lastActive && typeof lastActive.focus === 'function')
+        lastActive.focus();
     } catch (e) {}
   }
 
   // backdrop click closes only when clicking backdrop itself
   if (backdrop) {
-    backdrop.addEventListener('click', (e) => {
+    backdrop.addEventListener('click', e => {
       if (e.target === backdrop) closeModal();
     });
   }
   if (modalClose) modalClose.addEventListener('click', closeModal);
 
   // escape key closes
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && backdrop && !backdrop.classList.contains('hidden')) {
+  document.addEventListener('keydown', e => {
+    if (
+      e.key === 'Escape' &&
+      backdrop &&
+      !backdrop.classList.contains('hidden')
+    ) {
       closeModal();
     }
     if (e.key === 'Tab' && focusTrapHandler) {
@@ -209,14 +226,16 @@
   });
 
   // --- quantity controls ---
-  if (btnInc) btnInc.addEventListener('click', () => {
-    if (!qtyInput) return;
-    qtyInput.value = Math.max(1, Number(qtyInput.value || 1) + 1);
-  });
-  if (btnDec) btnDec.addEventListener('click', () => {
-    if (!qtyInput) return;
-    qtyInput.value = Math.max(1, Number(qtyInput.value || 1) - 1);
-  });
+  if (btnInc)
+    btnInc.addEventListener('click', () => {
+      if (!qtyInput) return;
+      qtyInput.value = Math.max(1, Number(qtyInput.value || 1) + 1);
+    });
+  if (btnDec)
+    btnDec.addEventListener('click', () => {
+      if (!qtyInput) return;
+      qtyInput.value = Math.max(1, Number(qtyInput.value || 1) - 1);
+    });
   if (qtyInput) {
     qtyInput.addEventListener('input', () => {
       const v = Number(qtyInput.value || 0);
@@ -229,14 +248,18 @@
     btnAddToCart.addEventListener('click', async () => {
       const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
       const id = getCurrentBookId();
-        console.log("Додано до кошика ", qty, { action: 'add_to_cart', bookId: id, quantity: qty });
+      console.log('Додано до кошика ', qty, {
+        action: 'add_to_cart',
+        bookId: id,
+        quantity: qty,
+      });
       showToast('Додано до кошика');
     });
   }
 
   // --- Buy Now: submit form -> alert & close ---
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', e => {
       e.preventDefault();
       const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
       alert('Дякуємо за покупку');
@@ -268,7 +291,9 @@
         header.className = 'ac-header';
         header.setAttribute('aria-expanded', 'false');
         header.setAttribute('aria-controls', `ac-panel-${idx}`);
-        header.innerHTML = `<span class="ac-title">${titles[idx] || 'Info'}</span><span class="ac-chevron">▾</span>`;
+        header.innerHTML = `<span class="ac-title">${
+          titles[idx] || 'Info'
+        }</span><span class="ac-chevron">▾</span>`;
         if (panel) node.insertBefore(header, panel);
         else node.appendChild(header);
       }
@@ -298,7 +323,7 @@
       };
 
       // make header keyboard accessible (Enter/Space)
-      header.addEventListener('keydown', (e) => {
+      header.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           header.click();
@@ -314,7 +339,7 @@
       modal.querySelectorAll(
         'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
       )
-    ).filter((el) => el.offsetParent !== null);
+    ).filter(el => el.offsetParent !== null);
     if (focusable.length === 0) return;
     const first = focusable[0];
     const last = focusable[focusable.length - 1];

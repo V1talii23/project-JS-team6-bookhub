@@ -8,24 +8,19 @@
   >
     <button id="modal-close" class="modal-close" aria-label="Закрити модальне">
       <svg
-        width="32"
-        height="32"
+        width="16"
+        height="16"
         viewBox="0 0 24 24"
         aria-hidden="true"
         focusable="false"
       >
-        <path
-          d="M18 6 L6 18 M6 6 L18 18"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-        />
+        <use href="./img/icons.svg#icon-close-btn"></use>
       </svg>
     </button>
 
     <div class="modal-content">
       <div class="modal-left">
-        <img id="modal-cover" src="/assets/fallback.jpg" alt="cover" />
+        <img id="modal-cover" src="./assets/fallback.jpg" alt="cover" />
       </div>
 
       <div class="modal-right">
@@ -63,10 +58,18 @@
           </div>
 
           <div class="actions">
-            <button type="button" id="add-to-cart" class="btn primary">
+            <button
+              type="button"
+              id="add-to-cart"
+              class="btn btn--orange modal-books-btn"
+            >
               Add To Cart
             </button>
-            <button type="submit" id="buy-now" class="btn outline">
+            <button
+              type="submit"
+              id="buy-now"
+              class="btn btn--modal-transparent modal-books-btn"
+            >
               Buy Now
             </button>
           </div>
@@ -98,6 +101,3 @@
     </div>
   </div>
 </div>
-
-<link rel="stylesheet" href="../css/modal-window-books.css" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
