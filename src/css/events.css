@@ -3,6 +3,11 @@
   margin-bottom: 24px;
 }
 
+.events-list-item {
+  width: 421px;
+  margin-right: 24px;
+}
+
 .events-section-title {
   margin-bottom: 16px;
 }
@@ -14,20 +19,24 @@
 
 .section-events-list {
   display: flex;
-  flex-direction: row;
-  gap: 24px;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
 }
 
 .events-img {
-  overflow: hidden;
-  margin-bottom: 24px;
+  height: auto;
+  margin-bottom: 16px;
+  border-radius: 16px;
 }
 
 .events-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 225px;
+  width: 421px;
+
+  /* height: 225px; */
 }
 
 .events-title {
