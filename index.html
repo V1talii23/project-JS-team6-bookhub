@@ -22,7 +22,7 @@
     <script type="module" crossorigin src="/project-JS-team6-bookhub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-JS-team6-bookhub/assets/vendor-Dg7flFYi.js">
     <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/vendor-DnGaGgwy.css">
-    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-CEvpKEeo.css">
+    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-CgCvlH9M.css">
   </head>
   <body>
     <header class="header">
@@ -826,101 +826,107 @@
 </div>
 
     <div id="modal-backdrop" class="backdrop" aria-hidden="true">
-  <div
-    id="modal"
-    class="modal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-title"
-  >
-    <button id="modal-close" class="modal-close" aria-label="Закрити модальне">
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-        focusable="false"
+  <div class="container modal-books-container">
+    <div
+      id="modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <button
+        id="modal-close"
+        class="modal-close"
+        aria-label="Закрити модальне"
       >
-        <use href="/project-JS-team6-bookhub/assets/icons-CUqSnjNr.svg#icon-close-btn"></use>
-      </svg>
-    </button>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="/project-JS-team6-bookhub/assets/icons-CUqSnjNr.svg#icon-close-btn"></use>
+        </svg>
+      </button>
 
-    <div class="modal-content">
-      <div class="modal-left">
-        <img id="modal-cover" src="./assets/fallback.jpg" alt="cover" />
-      </div>
+      <div class="modal-content">
+        <div class="modal-left">
+          <img id="modal-cover" src="./assets/fallback.jpg" alt="cover" />
+        </div>
 
-      <div class="modal-right">
-        <h2 id="modal-title" class="book-title">Book title</h2>
-        <p id="modal-author" class="book-author">Author</p>
-        <p id="modal-price" class="book-price">Price</p>
+        <div class="modal-right">
+          <h2 id="modal-title" class="book-title">Book title</h2>
+          <p id="modal-author" class="book-author">Author</p>
+          <p id="modal-price" class="book-price">Price</p>
 
-        <form id="modal-form" class="purchase-form">
-          <div class="qty-control" aria-label="Кількість">
-            <button
-              type="button"
-              id="decrease"
-              class="qty-btn"
-              aria-label="Зменшити"
-            >
-              −
-            </button>
-            <input
-              id="quantity"
-              class="qty-input"
-              name="quantity"
-              type="number"
-              value="1"
-              min="1"
-              inputmode="numeric"
-            />
-            <button
-              type="button"
-              id="increase"
-              class="qty-btn"
-              aria-label="Збільшити"
-            >
-              +
-            </button>
-          </div>
-
-          <div class="actions">
-            <button
-              type="button"
-              id="add-to-cart"
-              class="btn btn--orange modal-books-btn"
-            >
-              Add To Cart
-            </button>
-            <button
-              type="submit"
-              id="buy-now"
-              class="btn btn--modal-transparent modal-books-btn"
-            >
-              Buy Now
-            </button>
-          </div>
-        </form>
-
-        <div class="accordion-container">
-          <div class="ac">
-            <button type="button" class="ac-header">Description</button>
-            <div class="ac-panel">
-              <p class="ac-text"></p>
+          <form id="modal-form" class="purchase-form">
+            <div class="qty-control" aria-label="Кількість">
+              <button
+                type="button"
+                id="decrease"
+                class="qty-btn"
+                aria-label="Зменшити"
+              >
+                −
+              </button>
+              <input
+                id="quantity"
+                class="qty-input"
+                name="quantity"
+                type="number"
+                value="1"
+                min="1"
+                inputmode="numeric"
+              />
+              <button
+                type="button"
+                id="increase"
+                class="qty-btn"
+                aria-label="Збільшити"
+              >
+                +
+              </button>
             </div>
-          </div>
 
-          <div class="ac">
-            <button type="button" class="ac-header">Shipping</button>
-            <div class="ac-panel">
-              <p class="ac-text"></p>
+            <div class="actions">
+              <button
+                type="button"
+                id="add-to-cart"
+                class="btn btn--orange modal-books-btn"
+              >
+                Add To Cart
+              </button>
+              <button
+                type="submit"
+                id="buy-now"
+                class="btn btn--modal-transparent modal-books-btn"
+              >
+                Buy Now
+              </button>
             </div>
-          </div>
+          </form>
 
-          <div class="ac">
-            <button type="button" class="ac-header">Returns</button>
-            <div class="ac-panel">
-              <p class="ac-text"></p>
+          <div class="accordion-container">
+            <div class="ac">
+              <button type="button" class="ac-header">Description</button>
+              <div class="ac-panel">
+                <p class="ac-text"></p>
+              </div>
+            </div>
+
+            <div class="ac">
+              <button type="button" class="ac-header">Shipping</button>
+              <div class="ac-panel">
+                <p class="ac-text"></p>
+              </div>
+            </div>
+
+            <div class="ac">
+              <button type="button" class="ac-header">Returns</button>
+              <div class="ac-panel">
+                <p class="ac-text"></p>
+              </div>
             </div>
           </div>
         </div>
