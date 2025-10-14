@@ -182,29 +182,27 @@
       </ul>
     </div>
 
-    <div class="swiper-pagination"></div>
-
-    <ul class="slider-events" aria-hidden="true">
-      <li>
+   <div class="events-slider-btm">
+      <div class="events-slider-pagination">
+        <div class="events-swiper-pagination"></div>
+      </div>
+      <div class="events-slider-navigation">
         <button
-          class="btn--arrow prev swiper-button-prev"
+          class="arrow events-swiper-btn-prev"
           aria-label="Previous slide"
+          disabled
         >
-          <svg class="icon default" width="14" height="14">
-            <use xlink:href="/sprite.svg#chevron-left"></use>
+          <svg class="arrow-icon" width="24" height="24">
+            <use href="./img/icons.svg#icon-arrow-left"></use>
           </svg>
         </button>
-      </li>
-      <li>
-        <button
-          class="btn--arrow next swiper-button-next"
-          aria-label="Next slide"
-        >
-          <svg class="icon default" width="14" height="14">
-            <use xlink:href="/sprite.svg#chevron-right"></use>
+        <button class="arrow events-swiper-btn-next" aria-label="Next">
+          <svg class="arrow-icon" width="24" height="24">
+            <use href="./img/icons.svg#icon-arrow-right"></use>
           </svg>
         </button>
-      </li>
-    </ul>
+      </div>
+    </div>
+
   </div>
 </section>

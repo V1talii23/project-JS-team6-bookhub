@@ -1,78 +1,62 @@
-const slides = document.querySelectorAll('.section-events-list li');
-const nextBtn = document.querySelector('.btn--arrow.next');
-const prevBtn = document.querySelector('.btn--arrow.prev');
-const pagination = document.querySelector('.pagination');
+import Swiper from 'swiper';
+import { Navigation, Pagination, Keyboard, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-let slidesPerView;
-let currentIndex = 0;
+const eventsSwiper = new Swiper('.events-swiper', {
+  modules: [Navigation, Pagination, Keyboard, A11y],
 
-function setSlidesPerView() {
-  if (window.innerWidth >= 1440) {
-    slidesPerView = 3;
-  } else if (window.innerWidth >= 768) {
-    slidesPerView = 2;
-  } else {
-    slidesPerView = 1;
-  }
-}
+  slidesPerView: 1,
+  spaceBetween: 16,
+  loop: false,
 
-function createPagination() {
-  pagination.innerHTML = '';
-  const pages = Math.ceil(slides.length / slidesPerView);
-  for (let i = 0; i < pages; i++) {
-    const li = document.createElement('li');
-    if (i === Math.floor(currentIndex / slidesPerView))
-      li.classList.add('active');
-    li.addEventListener('click', () => {
-      currentIndex = i * slidesPerView;
-      updateSlider();
-    });
-    pagination.appendChild(li);
-  }
-}
+  navigation: {
+    nextEl: '.events-swiper-btn-next',
+    prevEl: '.events-swiper-btn-prev',
+    disabledClass: 'arrow--disabled',
+  },
 
-function updateSlider() {
-  slides.forEach((slide, i) => {
-    slide.style.display =
-      i >= currentIndex && i < currentIndex + slidesPerView ? 'block' : 'none';
-  });
+  pagination: {
+    el: '.events-swiper-pagination',
+    clickable: true,
+  },
 
-  const dots = pagination.querySelectorAll('li');
-  dots.forEach((dot, i) =>
-    dot.classList.toggle(
-      'active',
-      i === Math.floor(currentIndex / slidesPerView)
-    )
-  );
+  keyboard: {
+    enabled: true,
+    onlyInViewport: true,
+  },
 
-  prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
-  nextBtn.style.display =
-    currentIndex + slidesPerView >= slides.length ? 'none' : 'block';
-}
+  a11y: {
+    enabled: true,
+    prevSlideMessage: 'Попередні події',
+    nextSlideMessage: 'Наступні події',
+  },
 
-nextBtn.addEventListener('click', () => {
-  currentIndex += slidesPerView;
-  if (currentIndex >= slides.length)
-    currentIndex = slides.length - slidesPerView;
-  updateSlider();
+  breakpoints: {
+    768: { slidesPerView: 2 },
+    1440: { slidesPerView: 3 },
+  },
 });
 
-prevBtn.addEventListener('click', () => {
-  currentIndex -= slidesPerView;
-  if (currentIndex < 0) currentIndex = 0;
-  updateSlider();
-});
 
-window.addEventListener('resize', () => {
-  const prevSlidesPerView = slidesPerView;
-  setSlidesPerView();
-  if (slidesPerView !== prevSlidesPerView) {
-    currentIndex = 0;
-    createPagination();
-    updateSlider();
-  }
-});
+function updateButtons() {
+  const prevBtn = document.querySelector('.events-swiper-btn-prev');
+  const nextBtn = document.querySelector('.events-swiper-btn-next');
 
-setSlidesPerView();
-createPagination();
-updateSlider();
+  if (!prevBtn || !nextBtn) return;
+
+  prevBtn.disabled = eventsSwiper.isBeginning;
+  nextBtn.disabled = eventsSwiper.isEnd;
+
+  prevBtn.classList.toggle('arrow--disabled', eventsSwiper.isBeginning);
+  nextBtn.classList.toggle('arrow--disabled', eventsSwiper.isEnd);
+}
+
+
+eventsSwiper.on('init', updateButtons);
+
+eventsSwiper.on('slideChange', updateButtons);
+
+
+updateButtons();
