@@ -1,4 +1,4 @@
-const modal = document.querySelector('.modal');
+const modal = document.querySelector('.contact-modal');
 const openBtns = document.querySelectorAll('.open-modal');
 const closeBtn = modal.querySelector('.close-modal');
 const scrollBody = document.body.style;
