@@ -1,5 +1,10 @@
 .text {
   font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.events-section-title {
+  margin-bottom: 16px;
 }
 
 .events-text-bold {
@@ -7,68 +12,36 @@
   margin-bottom: 16px;
 }
 
-.events-content {
-  display: flex;
-  flex-direction: column;
-  width: 343px;
-  height: 183px;
-  gap: 16px;
-}
-
-.section-events {
+.section-events-list {
   display: flex;
   flex-direction: row;
-  margin-top: 32px;
+  gap: 24px;
 }
 
-.events-title {
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 140%;
-  letter-spacing: -0.01em;
-  color: var(--color-scheme-1-text);
-}
-
-.events-date {
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  color: var(--color-scheme-1-text);
-}
-
-.events-about {
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  color: var(--color-scheme-1-text);
-  margin-top: 8px;
+.events-img {
+  overflow: hidden;
+  margin-bottom: 24px;
 }
 
 .events-body {
   display: flex;
   flex-direction: column;
-  height: 172px;
+  justify-content: space-between;
+  height: 225px;
 }
 
-.events-register {
-  border: 0;
-  background-color: var(--color-scheme-1-background);
-  padding: 8px 0px 0px;
-  width: 95px;
-  height: 24px;
-  font-family: var(--font-family);
+.events-title {
   font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  color: var(--color-neutral-darkest);
-  margin-top: auto;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+.events-date {
+  margin-bottom: 8px;
 }
 
 .register-icon {
-  fill: var(--color-scheme-1-text);
+  fill: var(--black);
 }
 
 .slider-events {
@@ -117,31 +90,28 @@
 }
 
 @media screen and (min-width: 768px) {
-  .text {
-    font-size: 18px;
-  }
-  .section-events {
+  /* .section-events {
     gap: 24px;
-  }
+  } */
 
-  .events-body {
+  /* .events-body {
     height: 220px;
-  }
+  } */
 
-  .events-content {
+  /* .events-content {
     width: 768px;
     height: 113px;
-  }
+  } */
 }
 
 @media screen and (min-width: 1440px) {
-  .section-events {
+  /* .section-events {
     gap: 24px;
-  }
+  } */
 
-  .events-content {
+  /* .events-content {
     height: 128px;
-  }
+  } */
   /* 
     .slider-controls {
       display: none;
