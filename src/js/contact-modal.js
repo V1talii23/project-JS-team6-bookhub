@@ -1,6 +1,5 @@
 const modal = document.querySelector('.modal');
 const openBtns = document.querySelectorAll('.open-modal');
-const closeBtns = document.createElement('button');
 const closeBtn = modal.querySelector('.close-modal');
 const scrollBody = document.body.style;
 const scrollHtml = document.documentElement.style;
