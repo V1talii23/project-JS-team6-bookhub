@@ -3,5 +3,6 @@ import './js/header';
 import './js/hero';
 import './js/books';
 import './js/feedbacks';
+import './js/events';
 import './js/contact-modal';
 import './js/modal-window-books';

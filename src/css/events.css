@@ -24,12 +24,12 @@
   border-radius: 16px;
 }
 
-.section-events-list {
+/* .section-events-list {
   display: flex;
   gap: 16px;
   padding: 0;
   margin: 0;
-}
+} */
 
 .section-events-list .swiper-slide,
 .events-list-item {
@@ -53,9 +53,6 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 140%;
-}
-.btn--register {
-  margin-top: auto;
 }
 
 .events-date {
