@@ -76,7 +76,7 @@
 
 .modal.hidden {
   opacity: 0;
-  visibility: none;
+  visibility: hidden;
   pointer-events: none;
 }
 
