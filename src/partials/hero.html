@@ -56,8 +56,8 @@
           <source
             media="(min-width: 768px)"
             srcset="
-              ./img/hero/pages-banner-2-tablet.jpg   1x,
-              ./img/hero/pages-banner-2-tablet-2.jpg 2x
+              ./img/hero/pages-banner-2-tablet.jpg     1x,
+              ./img/hero/pages-banner-2-tablet-@2x.jpg 2x
             "
           />
           <source
@@ -94,8 +94,8 @@
           <source
             media="(min-width: 768px)"
             srcset="
-              ./img/hero/pages-banner-3-tablet.jpg   1x,
-              ./img/hero/pages-banner-3-tablet-2.jpg 2x
+              ./img/hero/pages-banner-3-tablet.jpg     1x,
+              ./img/hero/pages-banner-3-tablet-@2x.jpg 2x
             "
           />
           <source
@@ -132,8 +132,8 @@
           <source
             media="(min-width: 768px)"
             srcset="
-              ./img/hero/pages-banner-4-tablet.jpg   1x,
-              ./img/hero/pages-banner-4-tablet-2.jpg 2x
+              ./img/hero/pages-banner-4-tablet.jpg     1x,
+              ./img/hero/pages-banner-4-tablet-@2x.jpg 2x
             "
           />
           <source
@@ -156,25 +156,16 @@
     <div class="header-row">
       <h1>Discover Your Next Great Read Today!</h1>
       <div class="slider-controls">
-        <!-- Кнопки навігації -->
-        <div class="slider-controls">
-          <button class="btn--arrow prev" aria-label="Previous slide">
-            <svg class="icon default" width="14" height="14">
-              <use xlink:href="/sprite.svg#chevron-left"></use>
-            </svg>
-            <svg class="icon active" width="14" height="14">
-              <use xlink:href="/sprite.svg#chevron-left-white"></use>
-            </svg>
-          </button>
-          <button class="btn--arrow next" aria-label="Next slide">
-            <svg class="icon default" width="14" height="14">
-              <use xlink:href="/sprite.svg#chevron-right"></use>
-            </svg>
-            <svg class="icon active" width="14" height="14">
-              <use xlink:href="/sprite.svg#chevron-right-white"></use>
-            </svg>
-          </button>
-        </div>
+        <button class="arrow hero-swiper-btn-prev" aria-label="Previous slide">
+          <svg class="icon default" width="24" height="24">
+            <use xlink:href="./img/icons.svg#icon-arrow-left"></use>
+          </svg>
+        </button>
+        <button class="arrow hero-swiper-btn-next" aria-label="Next slide">
+          <svg class="icon default" width="24" height="24">
+            <use xlink:href="./img/icons.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
       </div>
     </div>
   </div>

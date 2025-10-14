@@ -11,14 +11,16 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  display: flex;
+  /* display: flex; */
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
+  display: none;
 }
 
 .slide.active {
   opacity: 1;
   z-index: 1;
+  display: block;
 }
 
 .slide picture,
@@ -111,23 +113,41 @@
   margin-left: auto;
 }
 
-.icon {
-  display: inline-block;
+.hero-swiper-btn-prev,
+.hero-swiper-btn-next {
+  width: 48px;
+  height: 48px;
+}
+
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e15d05;
+  fill: #fff;
+  border: 1px solid rgba(11, 5, 0, 0.15);
+}
+
+.arrow:hover,
+.arrow:focus {
+  background-color: #fceee6;
+  fill: #0b0500;
+}
+
+.arrow:active,
+.arrow.is-active {
+
+  background-color: #5a2502 !important;  
+}
+
+.arrow:disabled {
+  background-color: #e15d05;
+  opacity: 0.2;
+  cursor: not-allowed;
   pointer-events: none;
-  vertical-align: middle;
 }
 
-.icon.active {
-  display: none;
-}
-
-.nav.is-active .icon.default {
-  display: none;
-}
-
-.nav.is-active .icon.active {
-  display: inline-block;
-}
 
 /* === Планшети (від 768px) === */
 @media (min-width: 768px) {
@@ -191,7 +211,7 @@
     padding: 8px 0;
   }
 
-  .slider-controls {
+  .hero-section .slider-controls {
     display: flex;
     gap: 24px;
     justify-content: flex-end;
