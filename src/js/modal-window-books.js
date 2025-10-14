@@ -62,10 +62,10 @@
   let focusTrapHandler = null;
 
   // ensure backdrop initially hidden
-  //   if (backdrop) {
-  //     backdrop.classList.add('hidden');
-  //     backdrop.setAttribute('aria-hidden', 'true');
-  //   }
+  if (backdrop) {
+    backdrop.classList.add('hidden');
+    backdrop.setAttribute('aria-hidden', 'true');
+  }
 
   // --- delegation for Learn More buttons (supports both .learn-more and .learn-more-btn) ---
   document.body.addEventListener('click', e => {
