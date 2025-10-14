@@ -4,9 +4,8 @@
 }
 
 .events-list-item {
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  /* border-radius: 36px; */
+  width: 421px;
+  margin-right: 24px;
 }
 
 .events-section-title {

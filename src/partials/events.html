@@ -10,7 +10,7 @@
       Everyone’s welcome.
     </p>
 
-    <div class="swiper">
+    <div class="events-swiper swiper">
       <ul class="section-events-list swiper-wrapper">
         <li class="events-list-item swiper-slide">
           <picture class="events-images">
@@ -165,24 +165,26 @@
         </li>
       </ul>
     </div>
-    <div class="slider-events" aria-hidden="true">
-      <button class="btn--arrow prev" aria-label="Previous slide">
+
+    <div class="swiper-pagination"></div>
+
+    <ul class="slider-events" aria-hidden="true">
+      <button
+        class="btn--arrow prev swiper-button-prev"
+        aria-label="Previous slide"
+      >
         <svg class="icon default" width="14" height="14">
           <use xlink:href="/sprite.svg#chevron-left"></use>
         </svg>
-        <svg class="icon active" width="14" height="14">
-          <use xlink:href="/sprite.svg#chevron-left-white"></use>
-        </svg>
       </button>
-      <button class="btn--arrow next" aria-label="Next slide">
+      <button
+        class="btn--arrow next swiper-button-next"
+        aria-label="Next slide"
+      >
         <svg class="icon default" width="14" height="14">
           <use xlink:href="/sprite.svg#chevron-right"></use>
         </svg>
-        <svg class="icon active" width="14" height="14">
-          <use xlink:href="/sprite.svg#chevron-right-white"></use>
-        </svg>
       </button>
-      <ul class="pagination"></ul>
-    </div>
+    </ul>
   </div>
 </section>
