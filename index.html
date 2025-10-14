@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="Booksy — your ultimate online book hub. Discover bestsellers, new releases, and personalized book recommendations. Read reviews, find top authors, and shop your favorite titles at great prices."
+    />
     <link rel="icon" type="image/svg" href="/project-JS-team6-bookhub/assets/favicon-nIx-WawI.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Booksy</title>
@@ -19,7 +22,7 @@
     <script type="module" crossorigin src="/project-JS-team6-bookhub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-JS-team6-bookhub/assets/vendor-Dg7flFYi.js">
     <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/vendor-DnGaGgwy.css">
-    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-B22Kfwiw.css">
+    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-CEvpKEeo.css">
   </head>
   <body>
     <header class="header">
@@ -717,13 +720,6 @@
               >
                 123 Books St, Sydney NSW 2000 AU
               </p>
-              <a
-                class="address mobile-only"
-                href="geo:-33.7328137598511,150.85824972546118?q=123 Books St, Sydney NSW 2000 AU"
-                aria-label="Store address 123 Books St, Sydney NSW 2000 AU"
-              >
-                123 Books St, Sydney NSW 2000 AU
-              </a>
             </div>
           </li>
         </ul>
@@ -749,7 +745,7 @@
   <div class="container container-footer">
     <div class="footer-wrapper">
       <div class="footer-nav-container">
-        <a href="./index.html" class="footer-logo">
+        <a href="./index.html" class="footer-logo" aria-label="Site logo">
           <svg width="84" height="36">
             <use href="/project-JS-team6-bookhub/assets/icons-CUqSnjNr.svg#icon-site-logo"></use>
           </svg>
@@ -795,16 +791,16 @@
         <label>
           Name
           <input
+            class="contact-modal-form input"
             type="text"
             placeholder="Ann"
             name="name"
-            class="contact-modal-input"
           />
         </label>
         <label>
           Email
           <input
-            class="contact-modal-input"
+            class="contact-modal-form input"
             type="email"
             name="email"
             placeholder="hello@booksy.com"
@@ -815,7 +811,7 @@
         <label>
           Message
           <textarea
-            class="contact-modal-input message"
+            class="contact-modal-form message"
             name="message"
             rows="8"
             placeholder="Type your message..."
