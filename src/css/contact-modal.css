@@ -27,12 +27,7 @@
 .title {
   margin-bottom: 48px;
 }
-.message {
-  padding: 16px;
-  border-radius: 8px;
-  height: 180px;
-  overflow: hidden;
-}
+
 .title,
 .main-title {
   text-align: center;
@@ -52,6 +47,13 @@
   height: 40px;
   width: 100%;
   margin-bottom: 24px;
+}
+
+.message {
+  padding: 16px;
+  border-radius: 8px;
+  height: 180px;
+  overflow: hidden;
 }
 
 .contact-modal {

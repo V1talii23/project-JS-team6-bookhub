@@ -12,14 +12,12 @@
 }
 
 .books-header {
-  padding-top: 32px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
 .books-section {
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -190,9 +188,8 @@
   .books-group {
     gap: 0px;
   }
-  .books-container{
+  .books-container {
     gap: 0px;
-
   }
 
   .books-header {
@@ -239,7 +236,6 @@
 
 /*Desktop styles*/
 @media (min-width: 1440px) {
- 
   .books-container {
     display: flex;
     flex-direction: row;
@@ -271,7 +267,6 @@
   }
   .books-list-author {
     max-width: 175px;
-
   }
 
   .books-image {
@@ -287,5 +282,4 @@
     line-height: 150%;
     color: #0b0500;
   }
- 
 }
