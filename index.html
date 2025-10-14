@@ -22,7 +22,7 @@
     <script type="module" crossorigin src="/project-JS-team6-bookhub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-JS-team6-bookhub/assets/vendor-Dg7flFYi.js">
     <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/vendor-DnGaGgwy.css">
-    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-CgCvlH9M.css">
+    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-Ct7nSG5s.css">
   </head>
   <body>
     <header class="header">
@@ -72,7 +72,11 @@
             <use href="/project-JS-team6-bookhub/assets/icons-CUqSnjNr.svg#icon-site-logo"></use>
           </svg>
         </a>
-        <button type="button" class="close-btn">
+        <button
+          type="button"
+          class="close-btn close-header-btn"
+          aria-label="Закрити меню"
+        >
           <svg class="close-btn-icon" width="12" height="12">
             <use href="/project-JS-team6-bookhub/assets/icons-CUqSnjNr.svg#icon-close-btn"></use>
           </svg>
@@ -780,7 +784,11 @@
     <div class="contact-modal hidden">
   <div class="container contact-container">
     <div class="register-contact-modal">
-      <button class="close-btn close-modal">
+      <button
+        class="close-btn close-modal contact-close-btn"
+        type="button"
+        aria-label="Закрити модальне"
+      >
         <svg class="close-modal-icon" width="12" height="12">
           <use href="/project-JS-team6-bookhub/assets/icons-CUqSnjNr.svg#icon-close-btn"></use>
         </svg>
@@ -825,7 +833,7 @@
   </div>
 </div>
 
-    <div id="modal-backdrop" class="backdrop" aria-hidden="true">
+    <div id="modal-backdrop hidden" class="backdrop" aria-hidden="true">
   <div class="container modal-books-container">
     <div
       id="modal"
@@ -835,8 +843,9 @@
       aria-labelledby="modal-title"
     >
       <button
+        type="button"
         id="modal-close"
-        class="modal-close"
+        class="close-btn close-modal books-close-btn"
         aria-label="Закрити модальне"
       >
         <svg
