@@ -1,11 +1,15 @@
+// public/app.js (fixed)
+// Direct calls to https://books-backend.p.goit.global
+// Fixes: modal hidden on load, scoped accordion, image mapping (book_image etc),
+// delegation scoped to .books-list, remove/add scroll calls, single-binding handlers.
+
 import { removeScroll, addScroll } from './contact-modal';
 
 (() => {
   const API_BASE = 'https://books-backend.p.goit.global';
 
-  // --- helpers ---
-  const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
+  const $ = (s, ctx = document) => ctx.querySelector(s);
+  const $$ = (s, ctx = document) => Array.from((ctx || document).querySelectorAll(s));
   const escapeHtml = (s = '') =>
     String(s)
       .replaceAll('&', '&amp;')
@@ -13,6 +17,15 @@ import { removeScroll, addScroll } from './contact-modal';
       .replaceAll('>', '&gt;')
       .replaceAll('"', '&quot;')
       .replaceAll("'", '&#039;');
+
+  async function fetchJson(url) {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) {
+      const txt = await res.text().catch(() => null);
+      throw new Error(txt || `${res.status} ${res.statusText}`);
+    }
+    return res.json();
+  }
 
   function showToast(msg, ms = 1400) {
     const t = document.createElement('div');
@@ -33,91 +46,116 @@ import { removeScroll, addScroll } from './contact-modal';
     setTimeout(() => t.remove(), ms);
   }
 
-  async function fetchJson(url) {
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) {
-      const txt = await res.text().catch(() => null);
-      throw new Error(txt || `${res.status} ${res.statusText}`);
-    }
-    return res.json();
-  }
+  // modal root elements
+  const backdrop = document.getElementById('modal-backdrop');
+  const modal = document.getElementById('modal');
 
-  // --- DOM refs (based on your HTML) ---
-  const backdrop = $('#modal-backdrop');
-  const modal = $('#modal');
-  const modalClose = $('#modal-close');
-  const cover = $('#modal-cover');
-  const titleEl = $('#modal-title');
-  const authorEl = $('#modal-author');
-  const priceEl = $('#modal-price');
-  const qtyInput = $('#quantity');
-  const btnInc = $('#increase');
-  const btnDec = $('#decrease');
-  const btnAddToCart = $('#add-to-cart');
-  const form = $('#modal-form');
-  const accordionContainer = document.querySelector('.accordion-container');
-
-  // state
+  // state & refs (modal-local refs will be resolved when needed)
   let currentBook = null;
   let lastActive = null;
   let focusable = [];
   let focusTrapHandler = null;
 
-  // ensure backdrop initially hidden
+  // one-time flags to avoid duplicate bindings
+  let handlersAttached = false;
+
+  // Ensure modal hidden on load
   if (backdrop) {
     backdrop.classList.add('hidden');
     backdrop.setAttribute('aria-hidden', 'true');
   }
 
-  // --- delegation for Learn More buttons (supports both .learn-more and .learn-more-btn) ---
-  document.body.addEventListener('click', e => {
-    const btn = e.target.closest('.learn-more, .learn-more-btn');
+  // delegation target - prefer .books-list to avoid interfering with other UI
+  const booksListContainer = document.querySelector('.books-list');
+
+  function delegationHandler(e) {
+    const btn = e.target.closest('.learn-more, .learn-more-btn, button.learn-more-btn, button.learn-more');
     if (!btn) return;
+
+    // accept only if button is inside books-list OR has explicit data-id/data-book-id
+    const inBooksList = booksListContainer ? booksListContainer.contains(btn) : btn.closest('.books-item') !== null;
     const id =
       btn.dataset.bookId ||
       btn.dataset.id ||
       btn.getAttribute('data-book-id') ||
-      btn.getAttribute('data-id');
+      btn.getAttribute('data-id') ||
+      null;
+
+    if (!inBooksList && !id) return; // do nothing for other parts of UI
+
     if (!id) {
       alert('ID книги не задано (data-book-id або data-id).');
       return;
     }
-    openModal(id);
-  });
 
-  // --- open modal ---
+    openModal(id);
+  }
+
+  if (booksListContainer) {
+    booksListContainer.addEventListener('click', delegationHandler);
+  } else {
+    // fallback (rare), but make it defensive
+    document.body.addEventListener('click', delegationHandler);
+  }
+
+  // utility: get modal-local refs
+  function getModalRefs() {
+    if (!modal) return {};
+    return {
+      modalClose: $('#modal-close', modal),
+      cover: $('#modal-cover', modal),
+      titleEl: $('#modal-title', modal),
+      authorEl: $('#modal-author', modal),
+      priceEl: $('#modal-price', modal),
+      qtyInput: $('#quantity', modal),
+      btnInc: $('#increase', modal),
+      btnDec: $('#decrease', modal),
+      btnAddToCart: $('#add-to-cart', modal),
+      form: $('#modal-form', modal),
+      accordionContainer: $('.accordion-container', modal),
+    };
+  }
+
+  // open modal: fetch & populate
   async function openModal(bookId) {
     if (!backdrop || !modal) {
-      console.warn('Modal DOM elements not found.');
+      console.warn('Modal DOM not found');
       return;
+    }
+
+    // refresh refs
+    const refs = getModalRefs();
+    // block scroll via imported function
+    if (typeof removeScroll === 'function') removeScroll();
+    else {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
     }
 
     lastActive = document.activeElement;
 
-    // show backdrop, block scroll
+    // show backdrop and modal (backdrop contains modal)
     backdrop.classList.remove('hidden');
     backdrop.setAttribute('aria-hidden', 'false');
-    removeScroll();
 
-    // loading placeholders
-    if (titleEl) titleEl.textContent = 'Завантаження...';
-    if (authorEl) authorEl.textContent = '';
-    if (priceEl) priceEl.textContent = '';
-    if (cover) cover.src = '/assets/fallback.jpg';
-    // clear panels
-    if (accordionContainer) {
-      const panels = Array.from(
-        accordionContainer.querySelectorAll('.ac-panel')
-      );
+    // set loading placeholders
+    if (refs.titleEl) refs.titleEl.textContent = 'Завантаження...';
+    if (refs.authorEl) refs.authorEl.textContent = '';
+    if (refs.priceEl) refs.priceEl.textContent = '';
+    if (refs.cover) refs.cover.src = '/assets/fallback.jpg';
+
+    // clear modal-local panels
+    if (refs.accordionContainer) {
+      const panels = refs.accordionContainer.querySelectorAll('.ac-panel');
       panels.forEach(p => (p.innerHTML = ''));
     }
 
     try {
-      const data = await fetchJson(
-        `${API_BASE}/books/${encodeURIComponent(bookId)}`
-      );
+      const data = await fetchJson(`${API_BASE}/books/${encodeURIComponent(bookId)}`);
       currentBook = data;
       populateModal(data);
+      // attach handlers once
+      attachModalHandlersOnce();
       setInitialFocus();
       enableFocusTrap();
     } catch (err) {
@@ -127,157 +165,138 @@ import { removeScroll, addScroll } from './contact-modal';
     }
   }
 
-  // --- populate modal with book data ---
-  function populateModal(data) {
-    const title = data.title || data.name || data.bookTitle || '';
-    const authors =
-      data.authors ||
-      data.author ||
-      (Array.isArray(data.authorsList) ? data.authorsList.join(', ') : '');
-    const price =
-      data.price !== undefined && data.price !== null
-        ? data.price
-        : data.list_price || data.priceText || '';
-    const img =
-      data.image ||
-      data.cover ||
-      (Array.isArray(data.images) ? data.images[0] : data.imageUrl) ||
-      '/assets/fallback.jpg';
+function populateModal(data) {
+  const refs = getModalRefs ? getModalRefs() : {
+    cover: document.querySelector('#modal-cover'),
+    titleEl: document.querySelector('#modal-title'),
+    authorEl: document.querySelector('#modal-author'),
+    priceEl: document.querySelector('#modal-price'),
+    qtyInput: document.querySelector('#quantity'),
+    accordionContainer: document.querySelector('.accordion-container'),
+  };
 
-    if (cover) {
-      cover.src = img;
-      cover.alt = title || 'book cover';
+  const img = data.book_image || data.image || data.cover ||
+              (Array.isArray(data.images) && data.images[0]) ||
+              data.imageUrl || '/assets/fallback.jpg';
+
+  const title = data.title || data.Title || data.bookTitle || 'Без назви';
+  const author = data.author || data.contributor || data.authors || '';
+  const price = data.price !== undefined && data.price !== null ? data.price : (data.list_price || data.priceText || '');
+  const description = data.description || data.details || data.summary || '';
+
+  if (refs.cover) {
+    refs.cover.src = img;
+    refs.cover.alt = title;
+  }
+  if (refs.titleEl) refs.titleEl.textContent = title;
+  if (refs.authorEl) refs.authorEl.textContent = author;
+  if (refs.priceEl) refs.priceEl.textContent = price ? `$${price}` : '';
+
+  if (refs.qtyInput) refs.qtyInput.value = 1;
+
+  const detailsText = description || 'Опис недоступний.';
+  const shippingText = data.shipping || 'We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier service. Enjoy free standard shipping on orders over $50.';
+  const returnsText = data.returns || 'You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.';
+
+  if (refs.accordionContainer) {
+    const panels = refs.accordionContainer.querySelectorAll('.ac-panel');
+    if (panels.length >= 3) {
+      panels[0].innerHTML = `<p class="ac-text">${escapeHtml(detailsText)}</p>`;
+      panels[1].innerHTML = `<p class="ac-text">${escapeHtml(shippingText)}</p>`;
+      panels[2].innerHTML = `<p class="ac-text">${escapeHtml(returnsText)}</p>`;
+    } else {
+      refs.accordionContainer.innerHTML = `
+        <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(detailsText)}</p></div></div>
+        <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(shippingText)}</p></div></div>
+        <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(returnsText)}</p></div></div>
+      `;
     }
-    if (titleEl) titleEl.textContent = title || 'Без назви';
-    if (authorEl) authorEl.textContent = authors || '';
-    if (priceEl)
-      priceEl.textContent =
-        typeof price === 'number' ? `$${price}` : price || '';
 
-    if (qtyInput) qtyInput.value = 1;
-
-    // fill accordion panels (Details / Shipping / Returns)
-    const details =
-      data.details || data.description || data.summary || data.about || '';
-    const shipping = data.shipping || data.shipping_info || data.delivery || '';
-    const returns =
-      data.returns || data.returnPolicy || data.refundPolicy || '';
-
-    if (accordionContainer) {
-      const panels = accordionContainer.querySelectorAll('.ac-panel');
-      if (panels.length >= 3) {
-        panels[0].innerHTML = `<p class="ac-text">${escapeHtml(details)}</p>`;
-        panels[1].innerHTML = `<p class="ac-text">${escapeHtml(shipping)}</p>`;
-        panels[2].innerHTML = `<p class="ac-text">${escapeHtml(returns)}</p>`;
-      } else {
-        // fallback: recreate container with three panels
-        accordionContainer.innerHTML = `
-          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(
-            details
-          )}</p></div></div>
-          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(
-            shipping
-          )}</p></div></div>
-          <div class="ac"><div class="ac-panel"><p class="ac-text">${escapeHtml(
-            returns
-          )}</p></div></div>
-        `;
-      }
-      // init accordion UI (multiple open allowed, panels closed by default)
-      initAccordionUI_MultiOpen();
+    if (typeof initAccordionUI_MultiOpen === 'function') {
+      try { initAccordionUI_MultiOpen(modal); } catch (e) { console.warn('Accordion init failed', e); }
+    } else {
+      try { initAccordionUI_MultiOpen(modal); } catch (e) {}
     }
   }
+}
 
-  // --- close modal ---
+
   function closeModal() {
-    // release focus trap, restore scrolling, hide backdrop
     releaseFocusTrap();
     if (backdrop) {
       backdrop.classList.add('hidden');
       backdrop.setAttribute('aria-hidden', 'true');
     }
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
+    // restore scroll
+    if (typeof addScroll === 'function') addScroll();
+    else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
     currentBook = null;
-    // restore focus
-    try {
-      if (lastActive && typeof lastActive.focus === 'function')
-        lastActive.focus();
-    } catch (e) {}
+    try { if (lastActive && typeof lastActive.focus === 'function') lastActive.focus(); } catch (e) {}
   }
 
-  // backdrop click closes only when clicking backdrop itself
+  // attach backdrop/modal close handlers (scoped)
   if (backdrop) {
-    backdrop.addEventListener('click', e => {
+    backdrop.addEventListener('click', (e) => {
       if (e.target === backdrop) closeModal();
     });
   }
-  if (modalClose) modalClose.addEventListener('click', closeModal);
-
-  // escape key closes
-  document.addEventListener('keydown', e => {
-    if (
-      e.key === 'Escape' &&
-      backdrop &&
-      !backdrop.classList.contains('hidden')
-    ) {
-      closeModal();
-    }
-    if (e.key === 'Tab' && focusTrapHandler) {
-      focusTrapHandler(e);
-    }
+  // close button via delegation (modal scoped)
+  document.addEventListener('click', (e) => {
+    if (e.target.closest && e.target.closest('#modal-close')) closeModal();
   });
 
-  // --- quantity controls ---
-  if (btnInc)
-    btnInc.addEventListener('click', () => {
-      if (!qtyInput) return;
-      qtyInput.value = Math.max(1, Number(qtyInput.value || 1) + 1);
-    });
-  if (btnDec)
-    btnDec.addEventListener('click', () => {
-      if (!qtyInput) return;
-      qtyInput.value = Math.max(1, Number(qtyInput.value || 1) - 1);
-    });
-  if (qtyInput) {
-    qtyInput.addEventListener('input', () => {
-      const v = Number(qtyInput.value || 0);
-      if (!Number.isFinite(v) || v < 1) qtyInput.value = 1;
-    });
-  }
+  // escape + focus trap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop && !backdrop.classList.contains('hidden')) closeModal();
+    if (e.key === 'Tab' && focusTrapHandler) focusTrapHandler(e);
+  });
 
-  // --- Add To Cart: console.log + toast ---
-  if (btnAddToCart) {
-    btnAddToCart.addEventListener('click', async () => {
-      const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
+  // --- attach modal handlers only once ---
+  function attachModalHandlersOnce() {
+    if (handlersAttached) return;
+    handlersAttached = true;
+
+    // resolve refs now
+    const refs = getModalRefs();
+
+    // quantity handlers
+    if (refs.btnInc) refs.btnInc.addEventListener('click', () => {
+      if (!refs.qtyInput) return;
+      refs.qtyInput.value = Math.max(1, Number(refs.qtyInput.value || 1) + 1);
+    });
+    if (refs.btnDec) refs.btnDec.addEventListener('click', () => {
+      if (!refs.qtyInput) return;
+      refs.qtyInput.value = Math.max(1, Number(refs.qtyInput.value || 1) - 1);
+    });
+    if (refs.qtyInput) refs.qtyInput.addEventListener('input', () => {
+      const v = Number(refs.qtyInput.value || 0);
+      if (!Number.isFinite(v) || v < 1) refs.qtyInput.value = 1;
+    });
+
+    // add to cart
+    if (refs.btnAddToCart) refs.btnAddToCart.addEventListener('click', () => {
+      const refsNow = getModalRefs();
+      const qty = refsNow.qtyInput ? Math.max(1, Number(refsNow.qtyInput.value || 1)) : 1;
       const id = getCurrentBookId();
-      console.log('Додано до кошика ', qty, {
-        action: 'add_to_cart',
-        bookId: id,
-        quantity: qty,
-      });
+      console.log('Додано до кошика', { action: 'add_to_cart', bookId: id, quantity: qty });
       showToast('Додано до кошика');
     });
-  }
 
-  // --- Buy Now: submit form -> alert & close ---
-  if (form) {
-    form.addEventListener('submit', e => {
+    // buy now
+    if (refs.form) refs.form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const qty = qtyInput ? Math.max(1, Number(qtyInput.value || 1)) : 1;
       alert('Дякуємо за покупку');
       closeModal();
     });
   }
 
-  function getCurrentBookId() {
-    if (!currentBook) return null;
-    return currentBook._id || currentBook.id || currentBook.bookId || null;
-  }
-
-  // --- Accordion implementation: MULTI-OPEN allowed, panels closed by default, NO animation ---
-  function initAccordionUI_MultiOpen() {
-    const container = document.querySelector('.accordion-container');
+  // --- accordion: multi-open, scoped to modal -->
+  function initAccordionUI_MultiOpen(scopeModal = modal) {
+    if (!scopeModal) return;
+    const container = scopeModal.querySelector('.accordion-container');
     if (!container) return;
 
     const titles = ['Details', 'Shipping', 'Returns'];
@@ -286,7 +305,7 @@ import { removeScroll, addScroll } from './contact-modal';
     nodes.forEach((node, idx) => {
       const panel = node.querySelector('.ac-panel');
 
-      // create header button if it doesn't exist
+      // create header only inside this node and only if not exists
       let header = node.querySelector('.ac-header');
       if (!header) {
         header = document.createElement('button');
@@ -294,59 +313,49 @@ import { removeScroll, addScroll } from './contact-modal';
         header.className = 'ac-header';
         header.setAttribute('aria-expanded', 'false');
         header.setAttribute('aria-controls', `ac-panel-${idx}`);
-        header.innerHTML = `<span class="ac-title">${
-          titles[idx] || 'Info'
-        }</span><span class="ac-chevron">▾</span>`;
+        header.innerHTML = `<span class="ac-title">${titles[idx] || 'Info'}</span><span class="ac-chevron">▾</span>`;
         if (panel) node.insertBefore(header, panel);
         else node.appendChild(header);
       }
 
-      // ensure panel id
       if (panel && !panel.id) panel.id = `ac-panel-${idx}`;
 
       // hide panel by default
-      if (panel) {
-        panel.style.display = 'none';
-      }
+      if (panel) panel.style.display = 'none';
 
-      // attach toggle: allow multiple open, so toggle only this panel
+      // ensure no duplicate handlers
       header.onclick = () => {
         const isOpen = header.getAttribute('aria-expanded') === 'true';
         if (isOpen) {
-          // close
           header.setAttribute('aria-expanded', 'false');
-          header.querySelector('.ac-chevron').textContent = '▾';
+          const chev = header.querySelector('.ac-chevron');
+          if (chev) chev.textContent = '▾';
           if (panel) panel.style.display = 'none';
         } else {
-          // open (do not close others)
           header.setAttribute('aria-expanded', 'true');
-          header.querySelector('.ac-chevron').textContent = '▴';
+          const chev = header.querySelector('.ac-chevron');
+          if (chev) chev.textContent = '▴';
           if (panel) panel.style.display = 'block';
         }
       };
 
-      // make header keyboard accessible (Enter/Space)
-      header.addEventListener('keydown', e => {
+      header.onkeydown = (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           header.click();
         }
-      });
+      };
     });
   }
 
-  // --- focus trap (basic) ---
+  // focus trap basic
   function enableFocusTrap() {
     if (!modal) return;
-    focusable = Array.from(
-      modal.querySelectorAll(
-        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
-      )
-    ).filter(el => el.offsetParent !== null);
+    focusable = Array.from(modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'))
+      .filter(el => el.offsetParent !== null);
     if (focusable.length === 0) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    focusTrapHandler = function (e) {
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    focusTrapHandler = function(e) {
       if (e.key !== 'Tab') return;
       if (e.shiftKey) {
         if (document.activeElement === first) {
@@ -360,9 +369,7 @@ import { removeScroll, addScroll } from './contact-modal';
         }
       }
     };
-    try {
-      (modalClose || first).focus();
-    } catch (e) {}
+    try { (modal.querySelector('#modal-close') || first).focus(); } catch(e) {}
   }
 
   function releaseFocusTrap() {
@@ -371,11 +378,14 @@ import { removeScroll, addScroll } from './contact-modal';
   }
 
   function setInitialFocus() {
-    try {
-      (modalClose || modal).focus();
-    } catch (e) {}
+    try { (modal.querySelector('#modal-close') || modal).focus(); } catch(e) {}
   }
 
-  // expose for debugging
+  function getCurrentBookId() {
+    if (!currentBook) return null;
+    return currentBook._id || currentBook.id || currentBook.bookId || null;
+  }
+
+  // expose for debug
   window._closeBookModal = closeModal;
 })();

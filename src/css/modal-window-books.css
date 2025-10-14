@@ -16,6 +16,9 @@
   background: var(--dark-backdrop);
   z-index: 40;
   padding: 32px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow-y: auto;
 }
 
