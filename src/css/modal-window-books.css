@@ -29,7 +29,7 @@
   max-width: 1380px;
 }
 
-.modal-close {
+/* .modal-close {
   position: absolute;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@
   border-radius: 50%;
   cursor: pointer;
   color: #222;
-}
+} */
 
 .modal-content {
   display: flex;
@@ -127,7 +127,7 @@
   width: 100%;
 }
 
-.modal-books-btn.primary {
+/* .modal-books-btn.primary {
   background: var(--accent);
   color: #fff;
   border-color: transparent;
@@ -136,7 +136,7 @@
 .modal-books-btn.outline {
   border: 1px solid rgba(0, 0, 0, 0.2);
   background: transparent;
-}
+} */
 
 .ac {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
