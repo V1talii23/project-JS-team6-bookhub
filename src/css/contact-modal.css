@@ -43,8 +43,7 @@
   line-height: 1.4;
   margin-top: 16px;
 }
-textarea,
-input {
+.contact-modal-input {
   padding: 12px 8px;
   display: block;
   border-radius: 4px;
