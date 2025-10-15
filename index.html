@@ -40,9 +40,9 @@
     />
 
     <script type="module" crossorigin src="/project-JS-team6-bookhub/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-JS-team6-bookhub/assets/vendor-Tz34TiHb.js">
+    <link rel="modulepreload" crossorigin href="/project-JS-team6-bookhub/assets/vendor-CTgmw3Uk.js">
     <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/vendor-Fh_Uw44U.css">
-    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-DzONeiGt.css">
+    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-ldjaHl6u.css">
   </head>
   <body>
     <header class="header">
@@ -274,10 +274,13 @@
             <h3 class="books-section-title">Books</h3>
             <div class="books-show-counter"></div>
           </div>
-          <div class="categories-container" id="categories-container"></div>
+          <div class="categories-container" id="categories-container">
+            <span class="loader" id="categories-loader"></span>
+          </div>
         </div>
         <div class="books-list-container">
           <ul class="books-list"></ul>
+          <span class="loader" id="books-loader"></span>
           <button
             class="btn btn--orange show-more-btn visually-hidden"
             id="page-next"
@@ -884,6 +887,7 @@
       </button>
 
       <div class="modal-content">
+        <span class="loader" id="modal-books-loader"></span>
         <div class="modal-left">
           <img id="modal-cover" src="" alt="" />
         </div>
