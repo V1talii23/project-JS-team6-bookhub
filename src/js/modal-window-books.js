@@ -106,9 +106,7 @@ import { removeScroll, addScroll } from './contact-modal';
     if (cover) cover.src = '/assets/fallback.jpg';
     // clear panels
     if (accordionContainer) {
-      const panels = Array.from(
-        accordionContainer.querySelectorAll('.ac-panel')
-      );
+      const panels = accordionContainer.querySelectorAll('.ac-panel');
       panels.forEach(p => (p.innerHTML = ''));
     }
 
