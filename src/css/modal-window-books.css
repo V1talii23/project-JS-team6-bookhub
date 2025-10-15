@@ -17,6 +17,7 @@
   z-index: 40;
   padding: 32px 16px;
   overflow-y: auto;
+  display: none;
 }
 
 .modal {
@@ -127,18 +128,7 @@
   width: 100%;
 }
 
-/* .modal-books-btn.primary {
-  background: var(--accent);
-  color: #fff;
-  border-color: transparent;
-}
-
-.modal-books-btn.outline {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background: transparent;
-} */
-.accordion-container .ac {
-  background-color: unset;
+.ac {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 .accordion-container .ac:last-of-type {
