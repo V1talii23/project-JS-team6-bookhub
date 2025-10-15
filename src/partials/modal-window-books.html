@@ -1,5 +1,5 @@
-<div id="modal-backdrop hidden" class="backdrop" aria-hidden="true">
-  <div class="container modal-books-container">
+<div id="modal-backdrop" class="backdrop visually-hidden" aria-hidden="true">
+  <div class="container modal-books-container ">
     <div
       id="modal"
       class="modal"
@@ -26,7 +26,7 @@
 
       <div class="modal-content">
         <div class="modal-left">
-          <img id="modal-cover" src="./assets/fallback.jpg" alt="cover" />
+          <img id="modal-cover" src="" alt="" />
         </div>
 
         <div class="modal-right">
@@ -41,6 +41,7 @@
                 id="decrease"
                 class="qty-btn"
                 aria-label="Зменшити"
+                disabled="true"
               >
                 −
               </button>
@@ -83,28 +84,38 @@
 
           <div class="accordion-container">
             <div class="ac">
-              <button type="button" class="ac-header">Description</button>
+              <h2 class="ac-header">
+                <button type="button" class="ac-trigger">Description</button>
+              </h2>
               <div class="ac-panel">
-                <p class="ac-text"></p>
+                <p class="ac-text-description"></p>
               </div>
             </div>
 
             <div class="ac">
-              <button type="button" class="ac-header">Shipping</button>
+              <h2 class="ac-header">
+                <button type="button" class="ac-trigger">Shipping</button>
+              </h2>
               <div class="ac-panel">
-                <p class="ac-text"></p>
+                <p class="ac-text-shipping">We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier
+                service. Enjoy free standard shipping on orders over $50.</p>
               </div>
             </div>
 
             <div class="ac">
-              <button type="button" class="ac-header">Returns</button>
+              <h2 class="ac-header">
+                <button type="button" class="ac-trigger">Returns</button>
+              </h2>
               <div class="ac-panel">
-                <p class="ac-text"></p>
+                <p class="ac-text-returns">You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original
+                condition. To start a return, please contact our support team — we’ll guide you through the process quickly and
+                hassle-free.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
   </div>
 </div>

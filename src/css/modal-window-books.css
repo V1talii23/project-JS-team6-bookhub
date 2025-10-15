@@ -1,5 +1,5 @@
 :root {
-  --panel: #fdeee7;
+  --panel: #FCEEE6;
   --accent: #d85a00;
   --muted: #6b5a52;
   --dark-backdrop: rgba(0, 0, 0, 0.5);
@@ -137,9 +137,12 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   background: transparent;
 } */
-
-.ac {
+.accordion-container .ac {
+  background-color: unset;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.accordion-container .ac:last-of-type {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .ac-header {
