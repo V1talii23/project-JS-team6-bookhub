@@ -5,14 +5,12 @@ const nextBtn = document.querySelector('.hero-swiper-btn-next');
 let current = 0;
 
 function showSlide(index) {
-  console.log('Показываем слайд:', index);
   slides.forEach((slide, i) => {
     slide.classList.remove('active');
     slide.setAttribute('aria-hidden', 'true');
     if (i === index) {
       slide.classList.add('active');
       slide.setAttribute('aria-hidden', 'false');
-      console.log('Активирован слайд:', i, slide.className);
     }
   });
 }
@@ -28,7 +26,7 @@ function updateButtons() {
 }
 
 function flashButton(button) {
-  if (button.disabled) return; 
+  if (button.disabled) return;
   button.classList.add('is-active');
   button.blur();
   setTimeout(() => {

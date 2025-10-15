@@ -16,6 +16,13 @@ closeModalBtn.addEventListener('click', () => {
   toggleModal();
 });
 
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modalWindow.classList.contains('is-open')) {
+    toggleModal();
+    addScroll();
+  }
+});
+
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
     addScroll();

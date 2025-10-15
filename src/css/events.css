@@ -15,22 +15,13 @@
 .events-swiper {
   position: relative;
   width: 100%;
-  /* overflow: visible; */
 }
 
 .events-img {
   height: 277px;
   margin-bottom: 16px;
   border-radius: 16px;
-
 }
-
-/* .section-events-list {
-  display: flex;
-  gap: 16px;
-  padding: 0;
-  margin: 0;
-} */
 
 .section-events-list .swiper-slide,
 .events-list-item {
@@ -128,33 +119,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  /* .section-events {
-    gap: 24px;
-  } */
-
-  /* .events-body {
-    height: 220px;
-  } */
-
-  /* .events-content {
-    width: 768px;
-    height: 113px;
-  } */
-
   .events-body {
     max-width: 340px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  /* .section-events {
-    gap: 24px;
-  } */
-
-  /* .events-content {
-    height: 128px;
-  } */
-
   .events-body {
     max-width: 421px;
   }

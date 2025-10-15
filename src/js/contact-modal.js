@@ -9,7 +9,7 @@ openBtns.forEach(btn => {
     const categoryTitle = modal.querySelector('.title');
     categoryTitle.textContent = category;
 
-    modal.classList.remove('hidden');
+    modal.classList.add('is-open');
     removeScroll();
   });
 });
@@ -26,7 +26,7 @@ modal.addEventListener('click', e => {
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+  if (e.key === 'Escape' && modal.classList.contains('is-open')) {
     closeModal();
     addScroll();
   }
@@ -64,7 +64,7 @@ function addScroll() {
 }
 
 function closeModal() {
-  modal.classList.add('hidden');
+  modal.classList.remove('is-open');
   addScroll();
 }
 

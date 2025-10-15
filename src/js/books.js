@@ -113,7 +113,7 @@ function renderBooksListMarkup(books) {
           </div>
           <p class="books-list-price">$${price}</p>
           </div>
-          <button class="learn-more-btn" data-id=${_id} type="button">Learn More</button>
+          <button class="btn learn-more-btn" data-id=${_id} type="button">Learn More</button>
         </li>
       `
     )
