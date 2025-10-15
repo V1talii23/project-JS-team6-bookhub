@@ -9,7 +9,7 @@ import { removeScroll, addScroll, showToast } from './contact-modal';
 import s from 'accordion-js';
 
 new Accordion('.accordion-container', {
-   showMultiple: true,
+  showMultiple: true,
 });
 
 const booksList = document.querySelector('.books-list');
@@ -47,16 +47,16 @@ async function learnMoreBtnHandler(event) {
   }
   // console.log(bookId);
   try {
+    showModal();
+    showModalLoader();
     const bookData = await getBooksById(bookId);
     // console.log(bookData);
     renderBookMarkup(bookData);
-    showModal();
-    showModalLoader();
-    setTimeout(() => {
-      hideModalLoader();
-    }, 500);
     currentBookId = bookId;
-  } catch (error) {}
+  } catch (error) {
+  } finally {
+    hideModalLoader();
+  }
 }
 
 function renderBookMarkup({ book_image, title, author, price, description }) {
