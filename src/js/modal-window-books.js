@@ -60,16 +60,16 @@ function renderBookMarkup({ book_image, title, author, price, description }) {
 }
 
 function hideModal() {
-  if (!modal.classList.contains('visually-hidden')) {
-    modal.classList.add('visually-hidden');
+  if (modal.classList.contains('is-open')) {
+    modal.classList.remove('is-open');
     addScroll();
     currentBookId = null;
   }
 }
 
 function showModal() {
-  if (modal.classList.contains('visually-hidden')) {
-    modal.classList.remove('visually-hidden');
+  if (!modal.classList.contains('is-open')) {
+    modal.classList.add('is-open');
     removeScroll();
   }
 }
