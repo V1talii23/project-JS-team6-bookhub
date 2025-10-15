@@ -48,7 +48,7 @@ async function getBooksByCategory(category) {
 }
 
 // Test id: '65fc3c9da957e5c1ae05b741'
-async function getBooksById(id) {
+export async function getBooksById(id) {
   try {
     const response = await axios.get(`/books/${id}`);
     console.log(response.data);
