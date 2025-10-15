@@ -1,8 +1,10 @@
+import iziToast from 'izitoast';
 const modal = document.querySelector('.contact-modal');
 const openBtns = document.querySelectorAll('.open-modal');
 const closeBtn = modal.querySelector('.close-modal');
 const scrollBody = document.body.style;
 const scrollHtml = document.documentElement.style;
+
 openBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const category = btn.closest('.category')?.dataset.category || 'Default';
@@ -41,12 +43,11 @@ form.addEventListener('submit', e => {
   const message = form.elements.message.value.trim();
 
   if (!name || !email) {
-    alert('Please fill in all fields');
-    return;
+    return showToast('info', 'Please fill in all required fields.');
   }
   console.log('Form data:', { name, email, message: message || '' });
 
-  alert('Your message has been sent!');
+  showToast('success', 'Your message has been sent!');
 
   closeModal();
   addScroll();
@@ -68,4 +69,21 @@ function closeModal() {
   addScroll();
 }
 
-export { removeScroll, addScroll };
+function showToast(type = 'success', message = '') {
+  iziToast[type]({
+    icon: '',
+    message: message,
+    close: false,
+    backgroundColor: type === 'info' ? '#0b0500' : '#e15d05',
+    messageColor: '#ffffff',
+    timeout: 3000,
+    zindex: 9999,
+    progressBar: 'false',
+    position: 'topRight',
+    width: 400,
+    transitionIn: 'fadeInDown',
+    transitionOut: 'fadeOutUp',
+  });
+}
+
+export { removeScroll, addScroll, showToast };
