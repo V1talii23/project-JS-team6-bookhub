@@ -1,13 +1,9 @@
 :root {
-  --panel: #FCEEE6;
+  --panel: #fceee6;
   --accent: #d85a00;
   --muted: #6b5a52;
   --dark-backdrop: rgba(0, 0, 0, 0.5);
   --gap: 18px;
-}
-
-.hidden {
-  display: none !important;
 }
 
 .backdrop {
@@ -17,6 +13,18 @@
   z-index: 40;
   padding: 32px 16px;
   overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .modal {
@@ -28,21 +36,6 @@
   border-radius: 16px;
   max-width: 1380px;
 }
-
-/* .modal-close {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 16px;
-  right: 16px;
-  background: transparent;
-  border: 0;
-  padding: 8px;
-  border-radius: 50%;
-  cursor: pointer;
-  color: #222;
-} */
 
 .modal-content {
   display: flex;
@@ -127,22 +120,15 @@
   width: 100%;
 }
 
-/* .modal-books-btn.primary {
-  background: var(--accent);
-  color: #fff;
-  border-color: transparent;
-}
-
-.modal-books-btn.outline {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background: transparent;
-} */
-
 .ac {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 .accordion-container .ac:last-of-type {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.accordion-container .ac {
+  background-color: unset;
 }
 
 .ac-header {
