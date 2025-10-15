@@ -144,7 +144,13 @@
   font-weight: 600;
   font-style: initial;
 }
+.ac .ac-trigger::after {
+  content: url("data:image/svg+xml;utf8,<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16.293 8.29297L12 12.586L7.70697 8.29297L6.29297 9.70697L12 15.414L17.707 9.70697L16.293 8.29297Z' fill='%230B0500'/></svg>")!important;
+}
 
+.ac.is-active>.ac-header .ac-trigger::after {
+  content: url("data:image/svg+xml;utf8,<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6.29297 14.2929L7.70697 15.7069L12 11.4139L16.293 15.7069L17.707 14.2929L12 8.58594L6.29297 14.2929Z' fill='%230B0500'/></svg>")!important;
+}
 /* simple toast */
 .toast {
   position: fixed;
