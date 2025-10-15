@@ -6,6 +6,7 @@ import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
 import { getBooksById } from './books';
 import { removeScroll, addScroll, showToast } from './contact-modal';
+import s from 'accordion-js';
 
 new Accordion('.accordion-container', {
    showMultiple: true,
@@ -35,6 +36,8 @@ const inputQuantity = document.querySelector('#quantity');
 const btnAddToCart = document.querySelector('#add-to-cart');
 const btnBuyNow = document.querySelector('#buy-now');
 
+const modalLoader = document.querySelector('#modal-books-loader');
+
 let currentBookId = null;
 
 async function learnMoreBtnHandler(event) {
@@ -48,6 +51,10 @@ async function learnMoreBtnHandler(event) {
     // console.log(bookData);
     renderBookMarkup(bookData);
     showModal();
+    showModalLoader();
+    setTimeout(() => {
+      hideModalLoader();
+    }, 500);
     currentBookId = bookId;
   } catch (error) {}
 }
@@ -118,6 +125,18 @@ function buyNowHandler(event) {
   hideModal();
   addScroll();
   modalForm.reset();
+}
+
+function hideModalLoader() {
+  if (!modalLoader.classList.contains('visually-hidden')) {
+    modalLoader.classList.add('visually-hidden');
+  }
+}
+
+function showModalLoader() {
+  if (modalLoader.classList.contains('visually-hidden')) {
+    modalLoader.classList.remove('visually-hidden');
+  }
 }
 
 booksList.addEventListener('click', learnMoreBtnHandler);

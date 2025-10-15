@@ -1,11 +1,18 @@
+import s from 'accordion-js';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://books-backend.p.goit.global';
 
 const booksListContainer = document.querySelector('.books-list');
 const booksShowCounter = document.querySelector('.books-show-counter');
+
 const categoriesContainer = document.querySelector('#categories-container');
+
 const showMoreBtn = document.querySelector('#page-next');
+
+const booksLoader = document.querySelector('#books-loader');
+const categoriesLoader = document.querySelector('#categories-loader');
+
 const mobileBooksLimit = 10;
 const desktopBooksLimit = 24;
 const booksPerPage = 4;
@@ -134,11 +141,13 @@ function renderShowCounter(current, total) {
 }
 
 async function displayCategories() {
+  showCategoriesLoader();
   try {
     categories = await getBooksCategoryList();
     displayCategoriesByDevice();
   } catch (error) {
-    console.log(error.message);
+  } finally {
+    hideCategoriesLoader();
   }
 }
 
@@ -149,14 +158,20 @@ function displayCategoriesByDevice() {
 }
 
 async function displayBooksByCategory(category) {
+  showBooksLoader();
   try {
     books = await getBooksByCategory(category);
     page = 0;
     displayBookPage();
-  } catch (error) {}
+  } catch (error) {
+    console.log(error.message);
+  } finally {
+    hideBooksLoader();
+  }
 }
 
 async function displayTopBooks() {
+  showBooksLoader();
   try {
     const response = await getTopBooks();
     books = response.flatMap(element => {
@@ -169,7 +184,10 @@ async function displayTopBooks() {
     page = 0;
 
     displayBookPage();
-  } catch (error) {}
+  } catch (error) { }
+  finally {
+    hideBooksLoader();
+  }
 }
 
 function displayBookPage() {
@@ -218,6 +236,30 @@ function updateButtonView(current, total) {
 function loadPage() {
   displayCategories();
   displayTopBooks();
+}
+
+function hideBooksLoader() {
+  if (!booksLoader.classList.contains('visually-hidden')) {
+    booksLoader.classList.add('visually-hidden');
+  }
+}
+
+function showBooksLoader() {
+   if (booksLoader.classList.contains('visually-hidden')) {
+    booksLoader.classList.remove('visually-hidden');
+  }
+}
+
+function hideCategoriesLoader() {
+  if (!categoriesLoader.classList.contains('visually-hidden')) {
+    categoriesLoader.classList.add('visually-hidden');
+  }
+}
+
+function showCategoriesLoader() {
+   if (categoriesLoader.classList.contains('visually-hidden')) {
+    categoriesLoader.classList.remove('visually-hidden');
+  }
 }
 
 loadPage();
