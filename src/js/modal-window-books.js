@@ -1,16 +1,17 @@
 //New version of js
-import iziToast from 'izitoast';
+// import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import axios from 'axios';
+// import axios from 'axios';
 import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
 import { getBooksById } from './books';
-import { removeScroll, addScroll } from './contact-modal';
+import { removeScroll, addScroll, showToast } from './contact-modal';
 
 new Accordion('.accordion-container');
 
 const booksList = document.querySelector('.books-list');
 
+const modalForm = document.querySelector('#modal-form');
 const modalBackdrop = document.querySelector('#modal-backdrop');
 const modal = document.querySelector('.backdrop');
 const modalContainer = document.querySelector('.modal-books-container');
@@ -39,10 +40,10 @@ async function learnMoreBtnHandler(event) {
   if (!bookId) {
     return;
   }
-  console.log(bookId);
+  // console.log(bookId);
   try {
     const bookData = await getBooksById(bookId);
-    console.log(bookData);
+    // console.log(bookData);
     renderBookMarkup(bookData);
     showModal();
     currentBookId = bookId;
@@ -101,16 +102,20 @@ function addToCartHandler() {
     bookId: currentBookId,
     quantity: quantity,
   });
-  alert('Додано до кошика');
+  showToast('info', 'Додано до кошика');
 }
 
-function buyNowHandler() {
+function buyNowHandler(event) {
+  event.preventDefault();
   const quantity = Number(inputQuantity.value);
   console.log('Дякуємо за покупку ', {
     bookId: currentBookId,
     quantity: quantity,
   });
-  alert('Дякуємо за покупку');
+  showToast('success', 'Дякуємо за покупку');
+  hideModal();
+  addScroll();
+  modalForm.reset();
 }
 
 booksList.addEventListener('click', learnMoreBtnHandler);
@@ -123,4 +128,4 @@ btnIncrease.addEventListener('click', btnIncreaseHandler);
 btnDecrease.addEventListener('click', btnDecreaseHandler);
 
 btnAddToCart.addEventListener('click', addToCartHandler);
-btnBuyNow.addEventListener('click', buyNowHandler);
+modalForm.addEventListener('submit', buyNowHandler);

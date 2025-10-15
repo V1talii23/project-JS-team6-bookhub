@@ -18,7 +18,6 @@ let currentDevice = getDeviceType();
 async function getBooksCategoryList() {
   try {
     const response = await axios.get('/books/category-list');
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -28,7 +27,6 @@ async function getBooksCategoryList() {
 async function getTopBooks() {
   try {
     const response = await axios.get('/books/top-books');
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
@@ -40,7 +38,6 @@ async function getBooksByCategory(category) {
     const response = await axios.get(
       `/books/category/?category=${encodeURIComponent(category)}`
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.response.data.message || error.message);
@@ -51,7 +48,6 @@ async function getBooksByCategory(category) {
 export async function getBooksById(id) {
   try {
     const response = await axios.get(`/books/${id}`);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error.message);
