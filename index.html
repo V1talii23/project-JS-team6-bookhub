@@ -42,7 +42,7 @@
     <script type="module" crossorigin src="/project-JS-team6-bookhub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-JS-team6-bookhub/assets/vendor-CKOUzM3Q.js">
     <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/vendor-Fh_Uw44U.css">
-    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-BAl_lPN6.css">
+    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-OW5b2Drm.css">
   </head>
   <body>
     <header class="header">
@@ -55,7 +55,7 @@
     <nav class="nav">
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="#" class="nav-link">Home</a>
+          <a href="#home" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
           <a href="#books" class="nav-link">Books</a>
@@ -105,7 +105,7 @@
 
       <ul class="mobile-nav-list">
         <li class="mobile-nav-item">
-          <a href="./index.html" class="mobile-nav-link">Home</a>
+          <a href="#home" class="mobile-nav-link">Home</a>
         </li>
         <li class="mobile-nav-item">
           <a href="#books" class="mobile-nav-link">Books</a>
@@ -277,11 +277,15 @@
           <div class="" id="categories-container"></div>
         </div>
         <div class="books-list-container">
-<ul class="books-list"></ul>
-<button class="show-more-btn visually-hidden" id="page-next">Show More</button>
+          <ul class="books-list"></ul>
+          <button
+            class="btn btn--orange show-more-btn visually-hidden"
+            id="page-next"
+          >
+            Show More
+          </button>
         </div>
       </div>
-      
     </div>
   </div>
 </section>
@@ -775,10 +779,10 @@
           </svg>
         </a>
         <ul class="footer-nav">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#books">Books</a></li>
-          <li><a href="#feedback">Feedback</a></li>
-          <li><a href="#location">Location</a></li>
+          <li><a class="footer-nav-link" href="#home">Home</a></li>
+          <li><a class="footer-nav-link" href="#books">Books</a></li>
+          <li><a class="footer-nav-link" href="#feedbacks">Feedback</a></li>
+          <li><a class="footer-nav-link" href="#location">Location</a></li>
         </ul>
       </div>
       <form class="footer-form">
@@ -801,7 +805,7 @@
   </div>
 </footer>
 
-    <div class="contact-modal hidden">
+    <div class="contact-modal">
   <div class="container contact-container">
     <div class="register-contact-modal">
       <button
