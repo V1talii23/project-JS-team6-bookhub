@@ -7,7 +7,9 @@ import 'accordion-js/dist/accordion.min.css';
 import { getBooksById } from './books';
 import { removeScroll, addScroll, showToast } from './contact-modal';
 
-new Accordion('.accordion-container');
+new Accordion('.accordion-container', {
+   showMultiple: true,
+});
 
 const booksList = document.querySelector('.books-list');
 
