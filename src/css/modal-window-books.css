@@ -26,10 +26,10 @@
   visibility: visible;
   pointer-events: auto;
 }
-
+/* 
 .modal-books-container {
   padding: 0;
-}
+} */
 
 .modal {
   width: 100%;
