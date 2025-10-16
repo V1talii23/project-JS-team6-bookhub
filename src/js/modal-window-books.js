@@ -40,10 +40,8 @@ async function learnMoreBtnHandler(event) {
   if (!bookId) {
     return;
   }
-  // console.log(bookId);
   try {
     const bookData = await getBooksById(bookId);
-    // console.log(bookData);
     renderBookMarkup(bookData);
     showModal();
     currentBookId = bookId;
@@ -98,21 +96,21 @@ function btnDecreaseHandler() {
 }
 function addToCartHandler() {
   const quantity = Number(inputQuantity.value);
-  console.log('Додано до кошика ', {
+  console.log('Added to cart ', {
     bookId: currentBookId,
     quantity: quantity,
   });
-  showToast('info', 'Додано до кошика');
+  showToast('info', 'Added to cart');
 }
 
 function buyNowHandler(event) {
   event.preventDefault();
   const quantity = Number(inputQuantity.value);
-  console.log('Дякуємо за покупку ', {
+  console.log('Thank you for your purchase', {
     bookId: currentBookId,
     quantity: quantity,
   });
-  showToast('success', 'Дякуємо за покупку');
+  showToast('success', 'Thank you for your purchase');
   hideModal();
   addScroll();
   modalForm.reset();
