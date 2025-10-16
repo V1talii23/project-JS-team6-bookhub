@@ -79,6 +79,7 @@ function showModal() {
   if (!modal.classList.contains('is-open')) {
     modal.classList.add('is-open');
     removeScroll();
+    modalCloseBtn.focus();
   }
 }
 
