@@ -6,8 +6,11 @@ import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
 import { getBooksById } from './books';
 import { removeScroll, addScroll, showToast } from './contact-modal';
+import s from 'accordion-js';
 
-new Accordion('.accordion-container');
+new Accordion('.accordion-container', {
+  showMultiple: true,
+});
 
 const booksList = document.querySelector('.books-list');
 
@@ -33,6 +36,8 @@ const inputQuantity = document.querySelector('#quantity');
 const btnAddToCart = document.querySelector('#add-to-cart');
 const btnBuyNow = document.querySelector('#buy-now');
 
+const modalLoader = document.querySelector('#modal-books-loader');
+
 let currentBookId = null;
 
 async function learnMoreBtnHandler(event) {
@@ -41,11 +46,15 @@ async function learnMoreBtnHandler(event) {
     return;
   }
   try {
+    showModal();
+    showModalLoader();
     const bookData = await getBooksById(bookId);
     renderBookMarkup(bookData);
-    showModal();
     currentBookId = bookId;
-  } catch (error) {}
+  } catch (error) {
+  } finally {
+    hideModalLoader();
+  }
 }
 
 function renderBookMarkup({ book_image, title, author, price, description }) {
@@ -114,6 +123,18 @@ function buyNowHandler(event) {
   hideModal();
   addScroll();
   modalForm.reset();
+}
+
+function hideModalLoader() {
+  if (!modalLoader.classList.contains('visually-hidden')) {
+    modalLoader.classList.add('visually-hidden');
+  }
+}
+
+function showModalLoader() {
+  if (modalLoader.classList.contains('visually-hidden')) {
+    modalLoader.classList.remove('visually-hidden');
+  }
 }
 
 booksList.addEventListener('click', learnMoreBtnHandler);
