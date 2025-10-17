@@ -6,7 +6,11 @@ import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
 import { getBooksById } from './books';
 import { removeScroll, addScroll, showToast } from './contact-modal';
-import { addToShoppingList, getPaginatedBooks, updateCartCount } from './shopping-list';
+import {
+  addToShoppingList,
+  getPaginatedBooks,
+  updateCartCount,
+} from './shopping-list';
 import s from 'accordion-js';
 
 new Accordion('.accordion-container', {
@@ -124,12 +128,10 @@ function addToCartHandler() {
     price: currentBookPrice,
   };
   addToShoppingList(book);
-  console.log('Added to cart', book);
-  showToast('info', 'Added to cart');
   getPaginatedBooks();
   updateCartCount();
-  console.log('Додано до кошика ', book);
-  showToast('info', 'Додано до кошика');
+  console.log('Added to cart', book);
+  showToast('info', 'Added to cart');
 }
 
 function buyNowHandler(event) {
