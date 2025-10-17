@@ -21,7 +21,8 @@
   flex-direction: row;
   gap: 24px;
 }
-.prev-btn {
+
+.shopping-pagin-btn {
   width: 48px;
   height: 48px;
   padding: 12px;
@@ -34,34 +35,24 @@
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-.next-btn {
-  width: 48px;
-  height: 48px;
-  padding: 12px;
-  border: 1px solid rgba(11, 5, 0, 0.15);
-  background-color: #e15d05;
-  /* або свій колір */
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-.next-btn:hover,
-.next-btn:focus,
-.prev-btn:hover,
-.prev-btn:focus {
-  transform: scale(1.1);
-  background-color: #fceee6;
-  color: #0b0500;
-}
-.next-btn:disabled,
-.prev-btn:disabled {
-  background: #0b0500;
-  color: #ffffff;
-  opacity: 0.2;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    background-color: #fceee6;
+    color: #0b0500;
+  }
+
+  &:active {
+    background-color: var(--btn-active-orange);
+    transform: translateY(3px);
+  }
+
+  &:disabled {
+    background: #0b0500;
+    color: #ffffff;
+    opacity: 0.2;
+  }
 }
 
 @media (min-width: 768px) {
