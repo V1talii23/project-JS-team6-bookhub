@@ -64,6 +64,10 @@
     opacity: 0.2;
   }
 }
+.prev-btn svg,
+.next-btn svg {
+  pointer-events: none;
+}
 
 @media (min-width: 768px) {
   #shopping-list {
