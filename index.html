@@ -42,7 +42,7 @@
     <script type="module" crossorigin src="/project-JS-team6-bookhub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-JS-team6-bookhub/assets/vendor-CTgmw3Uk.js">
     <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/vendor-Fh_Uw44U.css">
-    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-DkGcqxxj.css">
+    <link rel="stylesheet" crossorigin href="/project-JS-team6-bookhub/assets/index-DM3wk1dL.css">
   </head>
   <body>
     <header class="header">
@@ -68,6 +68,11 @@
         </li>
         <li class="nav-item">
           <a href="#location" class="nav-link">Location</a>
+        </li>
+        <li class="nav-item">
+          <a href="" id="shopping-list-link" class="nav-link">Shopping List:
+            <span id="cart-count">0</span>
+          </a>
         </li>
       </ul>
 
@@ -118,6 +123,11 @@
         </li>
         <li class="mobile-nav-item">
           <a href="#location" class="mobile-nav-link">Location</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="" id="mobile-shopping-list-link" class="mobile-nav-link">Shopping List:
+            <span id="mobile-cart-count">0</span>
+          </a>
         </li>
       </ul>
     </div>
@@ -808,22 +818,9 @@
   </div>
 </footer>
 
-    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M11 8.41394V17.9999H13V8.41394L17.293 12.7069L18.707 11.2929L12 4.58594L5.29297 11.2929L6.70697 12.7069L11 8.41394Z"
-      fill="currentColor"
-    />
-  </svg>
-</button>
 
-    <div class="contact-modal">
+    <div id="modals-root">
+      <div class="contact-modal">
   <div class="container contact-container">
     <div class="register-contact-modal">
       <button
@@ -875,7 +872,7 @@
   </div>
 </div>
 
-    <div id="modal-backdrop" class="backdrop">
+      <div id="modal-backdrop" class="backdrop">
   <div class="container modal-books-container">
     <div
       id="modal"
@@ -1003,5 +1000,32 @@
   </div>
 </div>
 
+      <div id="shopping-list-backdrop" class="backdrop" aria-hidden="true">
+    <div class="container shopping-list-container">
+        <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button type="button" id="shopping-list-close" class="close-btn close-modal books-close-btn"
+                aria-label="Закрити модальне">
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <use href="/project-JS-team6-bookhub/assets/icons-CUqSnjNr.svg#icon-close-btn"></use>
+                </svg>
+            </button>
+
+            <div class="shopping-list-content">
+                <h2 id="modal-title" class="shopping-list-title">Shopping List</h2>
+                    <ul id="shopping-list"></ul>
+                    <div class="pagination">
+                    </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M11 8.41394V17.9999H13V8.41394L17.293 12.7069L18.707 11.2929L12 4.58594L5.29297 11.2929L6.70697 12.7069L11 8.41394Z"
+            fill="currentColor" />
+    </svg>
+</button>
   </body>
 </html>
