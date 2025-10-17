@@ -79,7 +79,7 @@ function showToast(type = 'success', message = '') {
     timeout: 3000,
     zindex: 9999,
     progressBar: 'false',
-    position: 'topRight',
+    position: type === 'success' ? 'topRight' : 'bottomCenter',
     width: 400,
     transitionIn: 'fadeInDown',
     transitionOut: 'fadeOutUp',
