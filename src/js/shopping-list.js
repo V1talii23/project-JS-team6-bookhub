@@ -2,7 +2,9 @@ import s from 'accordion-js';
 import { removeScroll, addScroll, showToast } from './contact-modal';
 
 const shoppingListLink = document.querySelector('#shopping-list-link');
-const mobileShoppingListLink = document.querySelector('#mobile-shopping-list-link');
+const mobileShoppingListLink = document.querySelector(
+  '#mobile-shopping-list-link'
+);
 const shoppingListModal = document.querySelector('#shopping-list-backdrop');
 const shoppingListCloseBtn = document.querySelector('#shopping-list-close');
 
@@ -11,7 +13,7 @@ const shoppingList = document.querySelector('#shopping-list');
 const pagination = document.querySelector('.pagination');
 
 const countCart = document.querySelector('#cart-count');
-const mobileCountCart = document.querySelector('#mobile-cart-count')
+const mobileCountCart = document.querySelector('#mobile-cart-count');
 
 const STORAGE_KEY = 'shoppingList';
 const ITEMS_PER_PAGE = 4;
@@ -28,8 +30,8 @@ export function addToShoppingList(book) {
   } else {
     currentShoppingList.push(book);
   }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(currentShoppingList));
-    updateCartCount();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(currentShoppingList));
+  updateCartCount();
 }
 export function getPaginatedBooks() {
   const allBooks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -74,13 +76,13 @@ function renderPagination(totalPages) {
   }
 
   // Prev кнопка
-  const prevBtn = `<button class="prev-btn" ${
+  const prevBtn = `<button class="shopping-pagin-btn prev-btn" ${
     currentPage === 1 ? 'disabled' : ''
   }><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M8.70694 12.293L4.41394 7.99997H13.9999V5.99997H4.41394L8.70694 1.70697L7.29294 0.292969L0.585938 6.99997L7.29294 13.707L8.70694 12.293Z" fill="currentColor" />
 </svg></button>`;
   // Next кнопка
-  const nextBtn = `<button class="next-btn" ${
+  const nextBtn = `<button class="shopping-pagin-btn next-btn" ${
     currentPage === totalPages ? 'disabled' : ''
   }><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M5.293 12.293L6.707 13.707L13.414 6.99997L6.707 0.292969L5.293 1.70697L9.586 5.99997H0V7.99997H9.586L5.293 12.293Z" fill="currentColor" />
@@ -150,12 +152,12 @@ export function updateCartCount() {
   const books = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   const total = books.reduce((sum, book) => sum + (book.quantity || 1), 0);
 
-    if (countCart) countCart.textContent = total;
-    if (mobileCountCart) mobileCountCart.textContent = total;
+  if (countCart) countCart.textContent = total;
+  if (mobileCountCart) mobileCountCart.textContent = total;
 }
 
 function shoppingListCountHandler(event) {
- const id = event.target.closest('.book-item')?.dataset.id;
+  const id = event.target.closest('.book-item')?.dataset.id;
   if (!id) return;
 
   let books = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -191,8 +193,6 @@ shoppingList.addEventListener('click', removeBookHandler);
 pagination.addEventListener('click', paginationButtonHandler);
 shoppingList.addEventListener('click', shoppingListCountHandler);
 document.addEventListener('DOMContentLoaded', () => {
-    getPaginatedBooks();
-    updateCartCount();
-
+  getPaginatedBooks();
+  updateCartCount();
 });
-
