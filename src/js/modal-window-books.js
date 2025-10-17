@@ -6,7 +6,7 @@ import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
 import { getBooksById } from './books';
 import { removeScroll, addScroll, showToast } from './contact-modal';
-import { addToShoppingList } from './shopping-list';
+import { addToShoppingList, getPaginatedBooks, updateCartCount } from './shopping-list';
 import s from 'accordion-js';
 
 new Accordion('.accordion-container', {
@@ -117,6 +117,8 @@ function addToCartHandler() {
   const quantity = Number(inputQuantity.value);
   const book = { _id: currentBookId, quantity: quantity, book_image: currentBookImg, title: currentBookTitle, author: currentBookAuthor, price: currentBookPrice };
   addToShoppingList(book);
+  getPaginatedBooks();
+  updateCartCount();
   console.log('Додано до кошика ', book);
   showToast('info', 'Додано до кошика');
 }
