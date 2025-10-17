@@ -157,6 +157,11 @@
   color: #0b0500;
 }
 
+.scroll-top-btn:active {
+  background-color: var(--btn-active-orange);
+  transform: translateY(3px);
+}
+
 .scroll-top-btn.show {
   opacity: 1;
   visibility: visible;
