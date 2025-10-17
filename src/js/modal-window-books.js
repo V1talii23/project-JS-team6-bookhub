@@ -115,8 +115,17 @@ function btnDecreaseHandler() {
 }
 function addToCartHandler() {
   const quantity = Number(inputQuantity.value);
-  const book = { _id: currentBookId, quantity: quantity, book_image: currentBookImg, title: currentBookTitle, author: currentBookAuthor, price: currentBookPrice };
+  const book = {
+    _id: currentBookId,
+    quantity: quantity,
+    book_image: currentBookImg,
+    title: currentBookTitle,
+    author: currentBookAuthor,
+    price: currentBookPrice,
+  };
   addToShoppingList(book);
+  console.log('Added to cart', book);
+  showToast('info', 'Added to cart');
   getPaginatedBooks();
   updateCartCount();
   console.log('Додано до кошика ', book);
