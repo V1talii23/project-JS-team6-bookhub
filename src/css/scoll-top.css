@@ -1,0 +1,34 @@
+/* Scroll to top button */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    border: 1px solid rgba(11, 5, 0, 0.15);
+    background-color: #E15D05;
+    /* або свій колір */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+.scroll-top-btn:hover,
+.scroll-top-btn:focus {
+    transform: scale(1.1);
+    background-color: #FCEEE6;
+    color: #0B0500;
+}
+
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}

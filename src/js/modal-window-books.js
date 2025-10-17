@@ -6,6 +6,7 @@ import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
 import { getBooksById } from './books';
 import { removeScroll, addScroll, showToast } from './contact-modal';
+import { addToShoppingList } from './shopping-list';
 import s from 'accordion-js';
 
 new Accordion('.accordion-container', {
@@ -39,6 +40,10 @@ const btnBuyNow = document.querySelector('#buy-now');
 const modalLoader = document.querySelector('#modal-books-loader');
 
 let currentBookId = null;
+let currentBookImg = null;
+let currentBookTitle = null;
+let currentBookAuthor = null;
+let currentBookPrice = null;
 
 async function learnMoreBtnHandler(event) {
   const bookId = event.target.dataset.id;
@@ -53,6 +58,10 @@ async function learnMoreBtnHandler(event) {
     // console.log(bookData);
     renderBookMarkup(bookData);
     currentBookId = bookId;
+    currentBookImg = bookData.book_image;
+    currentBookTitle = bookData.title;
+    currentBookAuthor = bookData.author;
+    currentBookPrice = bookData.price;
   } catch (error) {
   } finally {
     hideModalLoader();
@@ -107,10 +116,9 @@ function btnDecreaseHandler() {
 }
 function addToCartHandler() {
   const quantity = Number(inputQuantity.value);
-  console.log('Додано до кошика ', {
-    bookId: currentBookId,
-    quantity: quantity,
-  });
+  const book = { _id: currentBookId, quantity: quantity, book_image: currentBookImg, title: currentBookTitle, author: currentBookAuthor, price: currentBookPrice };
+  addToShoppingList(book);
+  console.log('Додано до кошика ', book);
   showToast('info', 'Додано до кошика');
 }
 
