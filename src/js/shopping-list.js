@@ -31,7 +31,7 @@ export function addToShoppingList(book) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(currentShoppingList));
     updateCartCount();
 }
-function getPaginatedBooks() {
+export function getPaginatedBooks() {
   const allBooks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   const totalPages = Math.ceil(allBooks.length / ITEMS_PER_PAGE);
 
@@ -115,6 +115,7 @@ function removeBookHandler(event) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
 
   getPaginatedBooks();
+  updateCartCount();
 }
 function paginationButtonHandler(event) {
   if (event.target.classList.contains('page-btn')) {
@@ -145,7 +146,7 @@ function closeShoppingList() {
   }
 }
 
-function updateCartCount() {
+export function updateCartCount() {
   const books = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   const total = books.reduce((sum, book) => sum + (book.quantity || 1), 0);
 
